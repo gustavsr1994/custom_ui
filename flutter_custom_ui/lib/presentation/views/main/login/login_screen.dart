@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
+import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/utils/validator_custom.dart';
 import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/line_button.dart';
 import 'package:flutter_custom_ui/presentation/shared/widgets/text_field/text_form_field.dart';
@@ -13,7 +14,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> with ValidatorCustom {
   var colorPallete = ColorsPallete();
   TextEditingController usernameController, passwordController;
-  FocusNode usernameFocus, passwordFocus;
+  final usernameFocus = FocusNode();
+  final passwordFocus = FocusNode();
   bool obscureStatus = true;
   final _formKey = GlobalKey<FormState>();
 
@@ -33,16 +35,30 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorCustom {
           ),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                    width: 50,
-                    height: 5,
-                    margin: EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: ColorsPallete().mainRedColor,
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
-                    )),
+                Center(
+                  child: Container(
+                      width: 30,
+                      height: 5,
+                      margin: EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: ColorsPallete().mainRedColor,
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                      )),
+                ),
                 SizedBox(height: 20),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    'Login Screen',
+                    style: textMediumColor(
+                        boldCondition: true, color: colorPallete.accentRedColor),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 TextFieldCustom(
                     textController: usernameController,
                     keyboardType: TextInputType.name,
@@ -50,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorCustom {
                     obscureText: false,
                     labelText: 'Username',
                     fillColor: colorPallete.transparantColor,
-                    onSubmitted: () {
+                    onSubmitted: (term) {
                       usernameFocus.unfocus();
                       FocusScope.of(context).requestFocus(passwordFocus);
                     },
@@ -58,13 +74,12 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorCustom {
                 TextFieldCustom(
                   textController: passwordController,
                   keyboardType: TextInputType.visiblePassword,
-                  focusNode: usernameFocus,
+                  focusNode: passwordFocus,
                   obscureText: obscureStatus,
                   labelText: 'Password',
-                    fillColor: colorPallete.transparantColor,
-                  onSubmitted: () {
-                    usernameFocus.unfocus();
-                    FocusScope.of(context).requestFocus(passwordFocus);
+                  fillColor: colorPallete.transparantColor,
+                  onSubmitted: (term) {
+                    passwordFocus.unfocus();
                   },
                   validator: validateRequired,
                   suffixIcon: IconButton(
@@ -77,15 +92,17 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorCustom {
                         });
                       }),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width / 3 * 2,
-                  margin: EdgeInsets.symmetric(vertical: 8),
-                  child: LineButton(
-                      textButton: 'Sign In',
-                      buttonColor: colorPallete.transparantColor,
-                      lineColor: colorPallete.mainRedColor,
-                      textColor: colorPallete.accentRedColor,
-                      onPress: () => navigateLogin()),
+                Center(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width / 3 * 2,
+                    margin: EdgeInsets.symmetric(vertical: 8),
+                    child: LineButton(
+                        textButton: 'Sign In',
+                        buttonColor: colorPallete.transparantColor,
+                        lineColor: colorPallete.mainRedColor,
+                        textColor: colorPallete.accentRedColor,
+                        onPress: () => navigateLogin()),
+                  ),
                 ),
               ],
             ),
@@ -97,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorCustom {
 
   void navigateLogin() {
     if (_formKey.currentState.validate()) {
-      Get.offNamed('/mainMenu');
+      Get.offAllNamed('/mainMenu');
     }
   }
 }

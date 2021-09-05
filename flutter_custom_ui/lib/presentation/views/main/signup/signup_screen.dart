@@ -4,7 +4,6 @@ import 'package:flutter_custom_ui/presentation/shared/common/utils/validator_cus
 import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/line_button.dart';
 import 'package:flutter_custom_ui/presentation/shared/widgets/text_field/text_form_field.dart';
 import 'package:flutter_custom_ui/presentation/views/main/login/login_screen.dart';
-import 'package:get/get.dart';
 
 class SignUpScreen extends StatefulWidget {
 
@@ -52,7 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> with ValidatorCustom {
                     obscureText: false,
                     labelText: 'Username',
                     fillColor: colorPallete.mainRedColor,
-                    onSubmitted: () {
+                    onSubmitted: (term) {
                       usernameFocus.unfocus();
                       FocusScope.of(context).requestFocus(passwordFocus);
                     },
@@ -64,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> with ValidatorCustom {
                   obscureText: obscureStatus,
                   labelText: 'Password',
                     fillColor: colorPallete.mainRedColor,
-                  onSubmitted: () {
+                  onSubmitted: (term) {
                     usernameFocus.unfocus();
                     FocusScope.of(context).requestFocus(passwordFocus);
                   },

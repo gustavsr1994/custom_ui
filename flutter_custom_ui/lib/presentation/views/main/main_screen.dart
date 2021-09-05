@@ -4,7 +4,6 @@ import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/line_butto
 import 'package:flutter_custom_ui/presentation/views/main/login/login_screen.dart';
 import 'package:flutter_custom_ui/presentation/views/main/signup/signup_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 class MainScreen extends StatefulWidget {
   @override

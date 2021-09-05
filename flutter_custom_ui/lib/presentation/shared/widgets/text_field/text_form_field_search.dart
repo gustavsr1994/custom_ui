@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 
-class TextFieldCustom extends StatelessWidget {
+class TextFormSearch extends StatelessWidget {
   final String labelText;
   final TextEditingController textController;
   final TextInputType keyboardType;
@@ -10,7 +11,7 @@ class TextFieldCustom extends StatelessWidget {
   final IconButton suffixIcon;
   final Function validator;
   final Color fillColor;
-  TextFieldCustom(
+  TextFormSearch(
       {@required this.textController,
       @required this.keyboardType,
       @required this.focusNode,
@@ -30,6 +31,7 @@ class TextFieldCustom extends StatelessWidget {
         obscureText: obscureText,
         onFieldSubmitted: onSubmitted,
         decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
           labelText: labelText,
           filled: true,
           fillColor: fillColor,
