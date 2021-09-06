@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       getPages: listPages,
       theme: ThemeData(
+          fontFamily: 'Sastrawan',
           appBarTheme: AppBarTheme(color: ColorsPallete().mainRedColor)),
       home: SplashScreen(),
     );
