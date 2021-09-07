@@ -1,25 +1,18 @@
-class ProductEntity {
+class CartEntity {
   final String codeProduct;
   final String nameProduct;
   final int price;
   final int discount;
   final String urlImage;
   final String category;
-  
-  ProductEntity(
+  final int qty;
+
+  CartEntity(
       {this.codeProduct,
       this.nameProduct,
       this.price,
       this.discount,
       this.urlImage,
-      this.category});
-
-  // @override
-  // List<Object> get props =>
-  //     [codeProduct,
-  //     nameProduct,
-  //     price,
-  //     discount,
-  //     urlImage,
-  //     category];
+      this.category,
+      this.qty});
 }

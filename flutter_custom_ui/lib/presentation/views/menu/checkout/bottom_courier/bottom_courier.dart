@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_ui/presentation/controllers/courier/Courier_controller.dart';
+import 'package:flutter_custom_ui/presentation/shared/common/constants/list_courier.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
-import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/line_button.dart';
-import 'package:flutter_custom_ui/presentation/shared/widgets/card/card_cart.dart';
 import 'package:get/get.dart';
 
-class BottomCart extends StatelessWidget {
-  final listCart;
-  BottomCart({this.listCart});
-
+class BottomCourier extends StatelessWidget {
   final colorPallete = ColorsPallete();
-
+  final courierController = Get.put(CourierController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +31,7 @@ class BottomCart extends StatelessWidget {
                       height: 5,
                       margin: EdgeInsets.all(4),
                       decoration: BoxDecoration(
-                        color: ColorsPallete().mainRedColor,
+                        color: colorPallete.mainRedColor,
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       )),
                 ),
@@ -42,7 +39,7 @@ class BottomCart extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8),
                   child: Text(
-                    'Cart',
+                    'List Courier',
                     style: textMediumColor(
                         boldCondition: true,
                         color: colorPallete.accentRedColor),
@@ -51,22 +48,27 @@ class BottomCart extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                for (var index = 0; index < listCart.length; index++)
-                  CardCart(
-                    cartProduct: listCart[index],
+                for (var index = 0; index < listCourier.length; index++)
+                  InkWell(
+                    onTap: () => setCourier(listCourier[index], context),
+                    child: Card(
+                      child: Container(
+                        margin: EdgeInsets.all(8),
+                        padding: EdgeInsets.all(8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              listCourier[index],
+                              style: textMediumColor(
+                                  boldCondition: true, color: Colors.black),
+                            ),
+                            Icon(Icons.arrow_forward_ios_rounded)
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                    child: LineButton(
-                        textButton: 'Check Out',
-                        buttonColor: colorPallete.mainRedColor,
-                        lineColor: colorPallete.mainRedColor,
-                        textColor: colorPallete.transparantColor,
-                        onPress: () => navigateToCheckOut(context)),
-                  ),
-                ),
               ],
             ),
           ),
@@ -75,8 +77,8 @@ class BottomCart extends StatelessWidget {
     );
   }
 
-  void navigateToCheckOut(BuildContext context) {
+  void setCourier(String name, BuildContext context) {
+    courierController.setCourier(name);
     Navigator.pop(context);
-    Get.toNamed('/checkOut');
   }
 }

@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_ui/data/models/product/product_response.dart';
+import 'package:flutter_custom_ui/domain/entities/product_entity.dart';
 import 'package:flutter_custom_ui/presentation/controllers/cart/cart_controller.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
@@ -9,7 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class CardProduct extends StatelessWidget {
-  final ProductResponse product;
+  final ProductEntity product;
   CardProduct({this.product});
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class CardProduct extends StatelessWidget {
                 product.discount == 0
                     ? SizedBox()
                     : Text(
-                        'Price : ${(int.parse(product.price) - product.discount)}',
+                        'Price : ${(product.price - product.discount)}',
                         style: textMediumColor(
                             boldCondition: true,
                             color: colorPallete.accentRedColor),

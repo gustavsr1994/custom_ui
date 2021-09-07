@@ -1,17 +1,52 @@
-import 'package:flutter_custom_ui/data/datasources/product_data_source.dart';
-import 'package:flutter_custom_ui/data/models/product/product_response.dart';
+import 'package:flutter_custom_ui/domain/entities/cart_entity.dart';
+import 'package:flutter_custom_ui/domain/entities/product_entity.dart';
+import 'package:flutter_custom_ui/domain/usecase/product_usecase.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {
-  var listProduct = <ProductResponse>[].obs;
-  var listCart = <ProductResponse>[].obs;
+  var listProduct = <ProductEntity>[].obs;
+  var listCart = <CartEntity>[].obs;
 
   void getAllProduct() async {
-    listProduct.value = await ProductDataApi().listProduct();
+    listProduct.value = await ProductUseCaseImpl().listProduct();
   }
 
-  void addToCart(ProductResponse product) async {
-    listCart.add(product);
-    print(listCart.length);
+  void addToCart(ProductEntity product) async {
+    if (listCart.length == 0) {
+      listCart.add(CartEntity(
+          codeProduct: product.codeProduct,
+          nameProduct: product.nameProduct,
+          category: product.category,
+          qty: 1,
+          price: product.price,
+          discount: product.discount,
+          urlImage: product.urlImage));
+    } else {
+      List<CartEntity> cart = listCart
+          .where((data) => data.codeProduct == product.codeProduct)
+          .toList();
+      if (cart.length == 0) {
+        listCart.add(CartEntity(
+            codeProduct: product.codeProduct,
+            nameProduct: product.nameProduct,
+            category: product.category,
+            qty: 1,
+            price: product.price,
+            discount: product.discount,
+            urlImage: product.urlImage));
+      } else {
+        var qty = cart[0].qty + 1;
+        listCart.removeWhere(
+            (element) => element.codeProduct == product.codeProduct);
+        listCart.add(CartEntity(
+            codeProduct: product.codeProduct,
+            nameProduct: product.nameProduct,
+            category: product.category,
+            qty: qty,
+            price: product.price,
+            discount: product.discount,
+            urlImage: product.urlImage));
+      }
+    }
   }
 }

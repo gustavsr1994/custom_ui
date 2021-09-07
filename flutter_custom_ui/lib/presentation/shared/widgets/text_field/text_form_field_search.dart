@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 
 class TextFormSearch extends StatelessWidget {
   final String labelText;

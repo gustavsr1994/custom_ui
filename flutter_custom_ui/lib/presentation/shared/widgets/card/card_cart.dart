@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_ui/data/models/product/product_response.dart';
+import 'package:flutter_custom_ui/domain/entities/cart_entity.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
-import 'package:get/get.dart';
 
 class CardCart extends StatelessWidget {
-  ProductResponse cartProduct;
+  final CartEntity cartProduct;
   CardCart({this.cartProduct});
 
   @override
@@ -16,25 +16,54 @@ class CardCart extends StatelessWidget {
       child: Card(
         margin: EdgeInsets.all(8),
         elevation: 3,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-        child: Column(
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.all(8),
-              child: Text(
-                cartProduct.nameProduct,
-                style: textLargeColor(
-                    boldCondition: true, color: colorPallete.accentRedColor),
-              ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Text(
+                    cartProduct.nameProduct,
+                    style: textLargeColor(
+                        boldCondition: true,
+                        color: colorPallete.accentRedColor),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Text(
+                    'Rp ${cartProduct.price}',
+                    style: textMediumColor(
+                        boldCondition: false,
+                        color: colorPallete.accentRedColor),
+                  ),
+                )
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.all(8),
-              child: Text(
-                'Rp ${cartProduct.price}',
-                style: textMediumColor(
-                    boldCondition: false, color: colorPallete.accentRedColor),
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                    icon: Icon(
+                      Icons.add,
+                      color: Colors.green,
+                    ),
+                    onPressed: null),
+                Text(cartProduct.qty.toString()),
+                IconButton(
+                    icon: Icon(
+                      Icons.minimize_outlined,
+                      color: Colors.red,
+                    ),
+                    onPressed: null),
+              ],
             )
           ],
         ),
