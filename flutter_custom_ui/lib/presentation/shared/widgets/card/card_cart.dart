@@ -39,7 +39,7 @@ class CardCart extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(8),
                   child: Text(
-                    'Rp ${cartProduct.price}',
+                    'Rp ${(cartProduct.price-cartProduct.discount)*cartProduct.qty}',
                     style: textMediumColor(
                         boldCondition: false,
                         color: colorPallete.accentRedColor),

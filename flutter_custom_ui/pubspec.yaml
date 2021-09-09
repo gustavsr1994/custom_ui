@@ -48,6 +48,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/presentation/shared/assets/animations/welcome_screen.json
+    - lib/presentation/shared/assets/animations/success_anim.json
     - lib/presentation/shared/assets/images/images_main_screen.svg
     - lib/presentation/shared/assets/images/ic_trolley.svg
     - lib/presentation/shared/assets/images/ic_coupon.svg

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_ui/domain/entities/cart_entity.dart';
 import 'package:flutter_custom_ui/presentation/controllers/cart/cart_controller.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
@@ -36,12 +37,16 @@ class _CartScreenState extends State<CartScreen> {
                 boldCondition: true, color: colorPallete.transparantColor),
           ),
           actions: [
-            IconButton(
-                icon: SvgPicture.asset(
-                  'lib/presentation/shared/assets/images/ic_trolley.svg',
-                  color: colorPallete.transparantColor,
-                ),
-                onPressed: () => bottomDialogCart(context))
+            GetX<CartController>(
+              init: CartController(),
+              builder: (controller) => IconButton(
+                  icon: SvgPicture.asset(
+                    'lib/presentation/shared/assets/images/ic_trolley.svg',
+                    color: colorPallete.transparantColor,
+                  ),
+                  onPressed: () =>
+                      bottomDialogCart(context, controller.listCart)),
+            )
           ],
         ),
         body: Stack(
@@ -115,19 +120,20 @@ class _CartScreenState extends State<CartScreen> {
         });
   }
 
-  void bottomDialogCart(BuildContext context) {
+  void bottomDialogCart(BuildContext context, List<CartEntity> listCart) {
+    int totalAmount = 0;
+    listCart.forEach((element) {
+      totalAmount =
+          totalAmount + ((element.price - element.discount) * element.qty);
+    });
     showModalBottomSheet(
         context: context,
         isScrollControlled: true,
         isDismissible: false,
         builder: (BuildContext context) {
-          return GetX<CartController>(
-            builder: (controller) {
-              return BottomCart(
-                listCart: controller.listCart.value,
-              );
-            },
-            init: CartController(),
+          return BottomCart(
+            listCart: listCart,
+            totalAmount: totalAmount,
           );
         });
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_ui/domain/entities/cart_entity.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
 import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/line_button.dart';
@@ -6,8 +7,9 @@ import 'package:flutter_custom_ui/presentation/shared/widgets/card/card_cart.dar
 import 'package:get/get.dart';
 
 class BottomCart extends StatelessWidget {
-  final listCart;
-  BottomCart({this.listCart});
+  final List<CartEntity> listCart;
+  final int totalAmount;
+  BottomCart({this.listCart, this.totalAmount});
 
   final colorPallete = ColorsPallete();
 
@@ -55,17 +57,27 @@ class BottomCart extends StatelessWidget {
                   CardCart(
                     cartProduct: listCart[index],
                   ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                    child: LineButton(
-                        textButton: 'Check Out',
-                        buttonColor: colorPallete.mainRedColor,
-                        lineColor: colorPallete.mainRedColor,
-                        textColor: colorPallete.transparantColor,
-                        onPress: () => navigateToCheckOut(context)),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text('Total : $totalAmount', style: textLargeColor(boldCondition: true, color: colorPallete.accentBlueColor),),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                        child: LineButton(
+                            textButton: 'Check Out  >',
+                            buttonColor: colorPallete.mainRedColor,
+                            lineColor: colorPallete.mainRedColor,
+                            textColor: colorPallete.transparantColor,
+                            onPress: () => navigateToCheckOut(context, listCart)),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -75,8 +87,8 @@ class BottomCart extends StatelessWidget {
     );
   }
 
-  void navigateToCheckOut(BuildContext context) {
+  void navigateToCheckOut(BuildContext context, List<CartEntity> listCart) {
     Navigator.pop(context);
-    Get.toNamed('/checkOut');
+    Get.toNamed('/checkOut', arguments: listCart);
   }
 }
