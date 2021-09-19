@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_ui/data/models/product/product_response.dart';
 import 'package:flutter_custom_ui/domain/entities/cart_entity.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
 
 class CardCart extends StatelessWidget {
-  final CartEntity cartProduct;
+  final CartEntity? cartProduct;
   CardCart({this.cartProduct});
 
   @override
@@ -30,7 +29,7 @@ class CardCart extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(8),
                   child: Text(
-                    cartProduct.nameProduct,
+                    cartProduct!.nameProduct,
                     style: textLargeColor(
                         boldCondition: true,
                         color: colorPallete.accentRedColor),
@@ -39,7 +38,7 @@ class CardCart extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(8),
                   child: Text(
-                    'Rp ${(cartProduct.price-cartProduct.discount)*cartProduct.qty}',
+                    'Rp ${(cartProduct!.price-cartProduct!.discount)*cartProduct!.qty}',
                     style: textMediumColor(
                         boldCondition: false,
                         color: colorPallete.accentRedColor),
@@ -56,7 +55,7 @@ class CardCart extends StatelessWidget {
                       color: Colors.green,
                     ),
                     onPressed: null),
-                Text(cartProduct.qty.toString()),
+                Text(cartProduct!.qty.toString()),
                 IconButton(
                     icon: Icon(
                       Icons.minimize_outlined,

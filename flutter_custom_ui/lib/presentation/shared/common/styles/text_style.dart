@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 TextStyle textVerySmallColor(
-    {Color color, @required bool boldCondition, bool strikeThrough}) {
+    {Color? color, required bool boldCondition, bool? strikeThrough}) {
   return TextStyle(
     decoration: strikeThrough == null
         ? TextDecoration.none
@@ -13,7 +13,7 @@ TextStyle textVerySmallColor(
 }
 
 TextStyle textSmallColor(
-    {Color color, @required bool boldCondition, bool strikeThrough}) {
+    {Color? color, required bool boldCondition, bool? strikeThrough}) {
   return TextStyle(
     decoration: strikeThrough == null
         ? TextDecoration.none
@@ -25,7 +25,7 @@ TextStyle textSmallColor(
 }
 
 TextStyle textMediumColor(
-    {Color color, @required bool boldCondition, bool strikeThrough}) {
+    {Color? color, required bool boldCondition, bool? strikeThrough}) {
   return TextStyle(
     decoration: strikeThrough == null
         ? TextDecoration.none
@@ -37,7 +37,7 @@ TextStyle textMediumColor(
 }
 
 TextStyle textLargeColor(
-    {Color color, @required bool boldCondition, bool strikeThrough}) {
+    {Color? color, required bool boldCondition, bool? strikeThrough}) {
   return TextStyle(
     decoration: strikeThrough == null
         ? TextDecoration.none
@@ -49,7 +49,7 @@ TextStyle textLargeColor(
 }
 
 TextStyle textVeryLargeColor(
-    {Color color, @required bool boldCondition, bool strikeThrough}) {
+    {Color? color, required bool boldCondition, bool? strikeThrough}) {
   return TextStyle(
     decoration: strikeThrough == null
         ? TextDecoration.none

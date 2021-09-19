@@ -20,12 +20,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
   var courierController = Get.put(CourierController());
   var paymentController = Get.put(PaymentController());
   int totalAmount = 0;
-  List<CartEntity> cartProduct;
+  List<CartEntity>? cartProduct;
   @override
   void initState() {
     super.initState();
     cartProduct = Get.arguments;
-    cartProduct.forEach((element) {
+    cartProduct!.forEach((element) {
       totalAmount =
           totalAmount + ((element.price - element.discount) * element.qty);
     });
@@ -88,7 +88,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     ],
                   ),
                 ),
-                for (var index = 0; index < cartProduct.length; index++)
+                for (var index = 0; index < cartProduct!.length; index++)
                   Container(
                     width: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.all(8),
@@ -96,14 +96,14 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          cartProduct[index].nameProduct,
+                          cartProduct![index].nameProduct,
                           style: textLargeColor(
                               boldCondition: false, color: Colors.black),
                         ),
                         Text(
-                          ((cartProduct[index].price -
-                                      cartProduct[index].discount) *
-                                  cartProduct[index].qty)
+                          ((cartProduct![index].price -
+                                      cartProduct![index].discount) *
+                                  cartProduct![index].qty)
                               .toString(),
                           style: textLargeColor(
                               boldCondition: false, color: Colors.black),

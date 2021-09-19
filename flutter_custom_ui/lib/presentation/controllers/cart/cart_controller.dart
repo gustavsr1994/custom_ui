@@ -12,6 +12,9 @@ class CartController extends GetxController {
   }
 
   void addToCart(ProductEntity product) async {
+    product.statusCard = true;
+    int index = listProduct.indexWhere((element) => element.codeProduct == product.codeProduct);
+    listProduct[index] = product;
     if (listCart.length == 0) {
       listCart.add(CartEntity(
           codeProduct: product.codeProduct,

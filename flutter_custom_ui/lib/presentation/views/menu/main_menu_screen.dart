@@ -29,7 +29,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: LineButton(
-                  buttonColor: colorPallete.transparantColor,
+                  buttonColor: colorPallete.transparantColor!,
                   lineColor: colorPallete.mainRedColor,
                   textButton: 'Cart',
                   textColor: colorPallete.accentRedColor,
@@ -40,7 +40,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: LineButton(
-                  buttonColor: colorPallete.transparantColor,
+                  buttonColor: colorPallete.transparantColor!,
                   lineColor: colorPallete.mainRedColor,
                   textButton: 'Chart',
                   textColor: colorPallete.accentRedColor,
@@ -51,7 +51,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: LineButton(
-                  buttonColor: colorPallete.transparantColor,
+                  buttonColor: colorPallete.transparantColor!,
                   lineColor: colorPallete.mainRedColor,
                   textButton: 'About Us',
                   textColor: colorPallete.accentRedColor,

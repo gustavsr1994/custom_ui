@@ -8,11 +8,11 @@ class CartEntity {
   final int qty;
 
   CartEntity(
-      {this.codeProduct,
-      this.nameProduct,
-      this.price,
-      this.discount,
-      this.urlImage,
-      this.category,
-      this.qty});
+      {required this.codeProduct,
+      required this.nameProduct,
+      required this.price,
+      required this.discount,
+      required this.urlImage,
+      required this.category,
+      required this.qty});
 }

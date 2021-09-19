@@ -7,8 +7,8 @@ import 'package:flutter_custom_ui/presentation/shared/widgets/card/card_cart.dar
 import 'package:get/get.dart';
 
 class BottomCart extends StatelessWidget {
-  final List<CartEntity> listCart;
-  final int totalAmount;
+  final List<CartEntity>? listCart;
+  final int? totalAmount;
   BottomCart({this.listCart, this.totalAmount});
 
   final colorPallete = ColorsPallete();
@@ -53,9 +53,9 @@ class BottomCart extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                for (var index = 0; index < listCart.length; index++)
+                for (var index = 0; index < listCart!.length; index++)
                   CardCart(
-                    cartProduct: listCart[index],
+                    cartProduct: listCart![index],
                   ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,8 +73,8 @@ class BottomCart extends StatelessWidget {
                             textButton: 'Check Out  >',
                             buttonColor: colorPallete.mainRedColor,
                             lineColor: colorPallete.mainRedColor,
-                            textColor: colorPallete.transparantColor,
-                            onPress: () => navigateToCheckOut(context, listCart)),
+                            textColor: colorPallete.transparantColor!,
+                            onPress: () => navigateToCheckOut(context, listCart!)),
                       ),
                     ),
                   ],

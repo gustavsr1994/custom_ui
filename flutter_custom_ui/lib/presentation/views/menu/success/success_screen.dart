@@ -19,9 +19,9 @@ class SuccessScreen extends StatelessWidget {
             Text('Payment Success', style: textLargeColor(boldCondition: true, color: Colors.black),),
             LineButton(
               buttonColor: color.mainBlueColor,
-              lineColor: color.transparantColor,
+              lineColor: color.transparantColor!,
               textButton: 'Main Menu',
-              textColor: color.transparantColor,
+              textColor: color.transparantColor!,
               onPress: () => navigateToSuccess(),
             )
           ],

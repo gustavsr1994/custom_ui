@@ -9,8 +9,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class CardProduct extends StatelessWidget {
-  final ProductEntity product;
+  final ProductEntity? product;
   CardProduct({this.product});
+
   @override
   Widget build(BuildContext context) {
     var colorPallete = ColorsPallete();
@@ -27,13 +28,13 @@ class CardProduct extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
                       image: CachedNetworkImageProvider(
-                        product.urlImage,
+                        product!.urlImage,
                       ),
                       fit: BoxFit.fill,
                     )),
                 height: 150,
               ),
-              product.discount == 0
+              product!.discount == 0
                   ? SizedBox()
                   : SvgPicture.asset(
                       'lib/presentation/shared/assets/images/ic_price_tag.svg',
@@ -48,19 +49,19 @@ class CardProduct extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(product.nameProduct),
-                Text('Price : ${product.price}',
+                Text(product!.nameProduct),
+                Text('Price : ${product!.price}',
                     style: textMediumColor(
                         boldCondition: false,
-                        strikeThrough: product.discount == 0 ? null : true,
+                        strikeThrough: product!.discount == 0 ? null : true,
                         color: colorPallete.accentRedColor)),
                 SizedBox(
                   height: 8,
                 ),
-                product.discount == 0
+                product!.discount == 0
                     ? SizedBox()
                     : Text(
-                        'Price : ${(product.price - product.discount)}',
+                        'Price : ${(product!.price - product!.discount)}',
                         style: textMediumColor(
                             boldCondition: true,
                             color: colorPallete.accentRedColor),
@@ -68,38 +69,19 @@ class CardProduct extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.all(8),
-            child: LineButton(
-              buttonColor: colorPallete.mainRedColor,
-              lineColor: colorPallete.mainRedColor,
-              textButton: 'Add to Cart',
-              textColor: colorPallete.transparantColor,
-              onPress: () => controller.addToCart(product),
-            ),
-          )
-          // GetX<CartController>(
-          //   builder: (controller) {
-          //     controller.listCart.forEach((element) {
-          //       if (element == product.codeProduct) {
-          //         return SizedBox();
-          //       } else {
-          //         return Container(
-          //           width: MediaQuery.of(context).size.width,
-          //           padding: EdgeInsets.all(8),
-          //           child: LineButton(
-          //             buttonColor: colorPallete.mainRedColor,
-          //             lineColor: colorPallete.mainRedColor,
-          //             textButton: 'Add to Cart',
-          //             textColor: colorPallete.transparantColor,
-          //             onPress: () => controller.addToCart(product.codeProduct) ,
-          //           ),
-          //         );
-          //       }
-          //     });
-          //   },
-          // )
+          product!.statusCard
+              ? SizedBox()
+              : Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(8),
+                  child: LineButton(
+                    buttonColor: colorPallete.mainRedColor,
+                    lineColor: colorPallete.mainRedColor,
+                    textButton: 'Add to Cart',
+                    textColor: colorPallete.transparantColor!,
+                    onPress: () => controller.addToCart(product!),
+                  ),
+                )
         ],
       ),
     );

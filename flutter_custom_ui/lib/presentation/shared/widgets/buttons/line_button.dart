@@ -6,23 +6,31 @@ class LineButton extends StatelessWidget {
   final Color textColor;
   final Color buttonColor;
   final String textButton;
-  final Function onPress;
-  LineButton({this.lineColor, this.textColor, this.buttonColor, this.textButton, this.onPress});
+  final Function() onPress;
+  LineButton(
+      {required this.lineColor,
+      required this.textColor,
+      required this.buttonColor,
+      required this.textButton,
+      required this.onPress});
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-          side: BorderSide(
-            color: lineColor,
-          )),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        primary: buttonColor,
+
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            side: BorderSide(
+              color: lineColor,
+            )),
+      ),
       child: Text(
         textButton,
         style: textMediumColor(boldCondition: true, color: textColor),
       ),
-      color: buttonColor,
       onPressed: onPress,
     );
   }

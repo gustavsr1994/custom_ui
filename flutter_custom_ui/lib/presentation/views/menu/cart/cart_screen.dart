@@ -18,8 +18,8 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   var colorPallete = ColorsPallete();
-  TextEditingController searchController;
-  FocusNode searchFocus;
+  TextEditingController searchController = TextEditingController();
+  FocusNode searchFocus = FocusNode();
   final controller = Get.put(CartController());
   @override
   void initState() {
@@ -37,16 +37,36 @@ class _CartScreenState extends State<CartScreen> {
                 boldCondition: true, color: colorPallete.transparantColor),
           ),
           actions: [
-            GetX<CartController>(
-              init: CartController(),
-              builder: (controller) => IconButton(
-                  icon: SvgPicture.asset(
-                    'lib/presentation/shared/assets/images/ic_trolley.svg',
-                    color: colorPallete.transparantColor,
-                  ),
-                  onPressed: () =>
-                      bottomDialogCart(context, controller.listCart)),
-            )
+            GetX<CartController>(builder: (controller) {
+              return Stack(
+                children: [
+                  IconButton(
+                      icon: SvgPicture.asset(
+                        'lib/presentation/shared/assets/images/ic_trolley.svg',
+                        color: colorPallete.transparantColor,
+                      ),
+                      onPressed: () =>
+                          bottomDialogCart(context, controller.listCart)),
+                  Positioned(
+                      right: 2,
+                      bottom: 2,
+                      child: Container(
+                        padding: EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: colorPallete.accentBlueColor),
+                        child: Center(
+                          child: Text(
+                            controller.listCart.length.toString(),
+                            style: textSmallColor(
+                                boldCondition: true,
+                                color: colorPallete.transparantColor),
+                          ),
+                        ),
+                      ))
+                ],
+              );
+            })
           ],
         ),
         body: Stack(
@@ -65,8 +85,8 @@ class _CartScreenState extends State<CartScreen> {
                       suffixIcon:
                           IconButton(icon: Icon(Icons.search), onPressed: null),
                       obscureText: false,
-                      fillColor: colorPallete.transparantColor,
-                      validator: null),
+                      fillColor: colorPallete.transparantColor!,
+                      validator: (value) => null),
                 ),
                 Expanded(
                     flex: 1,
@@ -87,17 +107,18 @@ class _CartScreenState extends State<CartScreen> {
                   height: 80,
                 ),
                 GetX<CartController>(
-                  builder: (controller) {
+                  init: CartController(),
+                  builder: (controllers) {
                     return Expanded(
                       flex: 1,
                       child: StaggeredGridView.countBuilder(
                         crossAxisCount: 4,
-                        itemCount: controller.listProduct.length,
+                        itemCount: controllers.listProduct.length,
                         primary: false,
                         crossAxisSpacing: 4.0,
                         mainAxisSpacing: 4.0,
                         itemBuilder: (context, index) => CardProduct(
-                          product: controller.listProduct[index],
+                          product: controllers.listProduct[index],
                         ),
                         staggeredTileBuilder: (index) => StaggeredTile.fit(2),
                       ),

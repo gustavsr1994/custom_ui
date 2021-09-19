@@ -17,7 +17,8 @@ class ProductRepositoryImpl extends ProductRepository {
           category: element.category,
           price: int.parse(element.price),
           discount: element.discount,
-          urlImage: element.urlImage));
+          urlImage: element.urlImage,
+          statusCard: false));
     });
     return listProduct;
   }

@@ -5,21 +5,14 @@ class ProductEntity {
   final int discount;
   final String urlImage;
   final String category;
-  
-  ProductEntity(
-      {this.codeProduct,
-      this.nameProduct,
-      this.price,
-      this.discount,
-      this.urlImage,
-      this.category});
+  bool statusCard;
 
-  // @override
-  // List<Object> get props =>
-  //     [codeProduct,
-  //     nameProduct,
-  //     price,
-  //     discount,
-  //     urlImage,
-  //     category];
+  ProductEntity(
+      {required this.codeProduct,
+      required this.nameProduct,
+      required this.price,
+      required this.discount,
+      required this.urlImage,
+      required this.category,
+      required this.statusCard});
 }

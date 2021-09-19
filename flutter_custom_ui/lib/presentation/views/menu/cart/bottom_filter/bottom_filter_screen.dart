@@ -98,7 +98,7 @@ class BottomFilterScreen extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 8),
                       child: LineButton(
                           textButton: 'Filter',
-                          buttonColor: colorPallete.transparantColor,
+                          buttonColor: colorPallete.transparantColor!,
                           lineColor: colorPallete.mainRedColor,
                           textColor: colorPallete.accentRedColor,
                           onPress: () => null),

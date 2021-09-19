@@ -32,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: LineButton(
                   textButton: 'Log In',
-                  buttonColor: colorPallete.transparantColor,
+                  buttonColor: colorPallete.transparantColor!,
                   lineColor: colorPallete.mainRedColor,
                   textColor: colorPallete.accentRedColor,
                   onPress: () => bottomDialogLogin(context),
@@ -45,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
                   textButton: 'Sign Up',
                   buttonColor: colorPallete.accentRedColor,
                   lineColor: colorPallete.mainRedColor,
-                  textColor: colorPallete.transparantColor,
+                  textColor: colorPallete.transparantColor!,
                   onPress: () => bottomDialogSignUp(context),
                 ),
               ),

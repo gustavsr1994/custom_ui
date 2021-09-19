@@ -5,21 +5,21 @@ class TextFormSearch extends StatelessWidget {
   final TextEditingController textController;
   final TextInputType keyboardType;
   final FocusNode focusNode;
-  final bool obscureText;
-  final Function onSubmitted;
-  final IconButton suffixIcon;
-  final Function validator;
+  final bool? obscureText;
+  final Function(String term) onSubmitted;
+  final IconButton? suffixIcon;
+  final Function(String value) validator;
   final Color fillColor;
   TextFormSearch(
-      {@required this.textController,
-      @required this.keyboardType,
-      @required this.focusNode,
+      {required this.textController,
+      required this.keyboardType,
+      required this.focusNode,
       this.obscureText,
-      this.labelText,
-      @required this.onSubmitted,
+      required this.labelText,
+      required this.onSubmitted,
       this.suffixIcon,
-      @required this.fillColor,
-      @required this.validator});
+      required this.fillColor,
+      required this.validator});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,7 +27,7 @@ class TextFormSearch extends StatelessWidget {
       child: TextFormField(
         controller: textController,
         keyboardType: keyboardType,
-        obscureText: obscureText,
+        obscureText: obscureText!,
         onFieldSubmitted: onSubmitted,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
@@ -36,7 +36,7 @@ class TextFormSearch extends StatelessWidget {
           fillColor: fillColor,
           suffixIcon: suffixIcon,
         ),
-        validator: validator,
+        validator: (value) => validator(value!),
       ),
     );
   }
