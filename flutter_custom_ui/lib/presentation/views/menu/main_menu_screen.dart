@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
+import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/button_with_icon.dart';
 import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/line_button.dart';
 import 'package:get/get.dart';
 
@@ -28,33 +29,99 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
               Container(
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 margin: EdgeInsets.symmetric(vertical: 8),
-                child: LineButton(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    color: colorPallete.mainRedColor,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Check In',
+                          style: textLargeColor(
+                              boldCondition: true,
+                              color: colorPallete.transparantColor),
+                        ),
+                        Text('Check Out',
+                            style: textLargeColor(
+                                boldCondition: true,
+                                color: colorPallete.transparantColor)),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '--:--',
+                          style: textLargeColor(
+                              boldCondition: false,
+                              color: colorPallete.transparantColor),
+                        ),
+                        Text('--:--',
+                            style: textLargeColor(
+                                boldCondition: false,
+                                color: colorPallete.transparantColor)),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    ButtonWithIcon(
+                      buttonColor: colorPallete.transparantColor!,
+                      lineColor: colorPallete.mainRedColor,
+                      textButton: 'Absent',
+                      textColor: colorPallete.accentRedColor,
+                      image:
+                          'lib/presentation/shared/assets/images/ic_barcode.svg',
+                      onPress: () => navigateToCart(),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 32,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 3 * 2,
+                margin: EdgeInsets.symmetric(vertical: 8),
+                child: ButtonWithIcon(
                   buttonColor: colorPallete.transparantColor!,
                   lineColor: colorPallete.mainRedColor,
                   textButton: 'Cart',
                   textColor: colorPallete.accentRedColor,
+                  image:
+                      'lib/presentation/shared/assets/images/ic_arrow_right.svg',
                   onPress: () => navigateToCart(),
                 ),
               ),
               Container(
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 margin: EdgeInsets.symmetric(vertical: 8),
-                child: LineButton(
+                child: ButtonWithIcon(
                   buttonColor: colorPallete.transparantColor!,
                   lineColor: colorPallete.mainRedColor,
                   textButton: 'Chart',
                   textColor: colorPallete.accentRedColor,
+                  image:
+                      'lib/presentation/shared/assets/images/ic_arrow_right.svg',
                   onPress: () => null,
                 ),
               ),
               Container(
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 margin: EdgeInsets.symmetric(vertical: 8),
-                child: LineButton(
+                child: ButtonWithIcon(
                   buttonColor: colorPallete.transparantColor!,
                   lineColor: colorPallete.mainRedColor,
                   textButton: 'About Us',
                   textColor: colorPallete.accentRedColor,
+                  image:
+                      'lib/presentation/shared/assets/images/ic_arrow_right.svg',
                   onPress: () => null,
                 ),
               )

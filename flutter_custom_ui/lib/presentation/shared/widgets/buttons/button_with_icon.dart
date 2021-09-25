@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class LineButton extends StatelessWidget {
+class ButtonWithIcon extends StatelessWidget {
   final Color lineColor;
   final Color textColor;
   final Color buttonColor;
   final String textButton;
+  final String image;
   final Function() onPress;
-  LineButton(
+  ButtonWithIcon(
       {required this.lineColor,
       required this.textColor,
       required this.buttonColor,
       required this.textButton,
+      required this.image,
       required this.onPress});
 
   @override
@@ -26,9 +29,19 @@ class LineButton extends StatelessWidget {
               color: lineColor,
             )),
       ),
-      child: Text(
-        textButton,
-        style: textMediumColor(boldCondition: true, color: textColor),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            textButton,
+            style: textMediumColor(boldCondition: true, color: textColor),
+          ),
+          SvgPicture.asset(
+            image,
+            color: textColor,
+            fit: BoxFit.contain,
+          )
+        ],
       ),
       onPressed: onPress,
     );

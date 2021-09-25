@@ -36,11 +36,14 @@ class CardProduct extends StatelessWidget {
               ),
               product!.discount == 0
                   ? SizedBox()
-                  : SvgPicture.asset(
-                      'lib/presentation/shared/assets/images/ic_price_tag.svg',
-                      color: colorPallete.accentBlueColor,
-                      height: 50,
-                      width: 40,
+                  : Positioned(
+                      top: 2,
+                      right: 2,
+                      child: SvgPicture.asset(
+                        'lib/presentation/shared/assets/images/ic_price_tag.svg',
+                        color: colorPallete.accentBlueColor,
+                        fit: BoxFit.contain,
+                      ),
                     )
             ],
           ),

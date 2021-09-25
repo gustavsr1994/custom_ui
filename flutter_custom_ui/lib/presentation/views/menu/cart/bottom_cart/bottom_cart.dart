@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_ui/domain/entities/cart_entity.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
+import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/button_with_icon.dart';
 import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/line_button.dart';
 import 'package:flutter_custom_ui/presentation/shared/widgets/card/card_cart.dart';
 import 'package:get/get.dart';
@@ -69,11 +70,12 @@ class BottomCart extends StatelessWidget {
                       child: Padding(
                         padding:
                             EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                        child: LineButton(
-                            textButton: 'Check Out  >',
+                        child: ButtonWithIcon(
+                            textButton: 'Check Out',
                             buttonColor: colorPallete.mainRedColor,
                             lineColor: colorPallete.mainRedColor,
                             textColor: colorPallete.transparantColor!,
+                            image: 'lib/presentation/shared/assets/images/ic_arrow_right.svg',
                             onPress: () => navigateToCheckOut(context, listCart!)),
                       ),
                     ),
