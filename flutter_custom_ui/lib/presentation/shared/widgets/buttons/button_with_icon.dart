@@ -38,7 +38,6 @@ class ButtonWithIcon extends StatelessWidget {
           ),
           SvgPicture.asset(
             image,
-            color: textColor,
             fit: BoxFit.contain,
           )
         ],

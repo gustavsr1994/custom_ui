@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
 import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/button_with_icon.dart';
-import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/line_button.dart';
 import 'package:get/get.dart';
 
 class MainMenuScreen extends StatefulWidget {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_ui/presentation/controllers/login/auth_controller.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
+import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/button_with_icon.dart';
 import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/line_button.dart';
 import 'package:flutter_custom_ui/presentation/views/main/login/login_screen.dart';
 import 'package:flutter_custom_ui/presentation/views/main/signup/signup_screen.dart';
@@ -12,6 +14,8 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   var colorPallete = ColorsPallete();
+  late String emailLogin = '';
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,6 +40,61 @@ class _MainScreenState extends State<MainScreen> {
                   lineColor: colorPallete.mainRedColor,
                   textColor: colorPallete.accentRedColor,
                   onPress: () => bottomDialogLogin(context),
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 3 * 2,
+                margin: EdgeInsets.symmetric(vertical: 8),
+                child: ButtonWithIcon(
+                  textButton: 'Log In with GMail',
+                  buttonColor: colorPallete.transparantColor!,
+                  lineColor: colorPallete.mainRedColor,
+                  textColor: colorPallete.accentRedColor,
+                  image:
+                      'lib/presentation/shared/assets/images/ic_login_google.svg',
+                  onPress: () {
+                    loginWithGoogle();
+                  },
+                ),
+              ),
+              Text('Email : $emailLogin'),
+              Container(
+                width: MediaQuery.of(context).size.width / 3 * 2,
+                margin: EdgeInsets.symmetric(vertical: 8),
+                child: ButtonWithIcon(
+                  textButton: 'Log In with Facebook',
+                  buttonColor: colorPallete.transparantColor!,
+                  lineColor: colorPallete.mainBlueColor,
+                  textColor: colorPallete.accentBlueColor,
+                  image:
+                      'lib/presentation/shared/assets/images/ic_login_facebook.svg',
+                  onPress: () => null,
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 3 * 2,
+                margin: EdgeInsets.symmetric(vertical: 8),
+                child: ButtonWithIcon(
+                  textButton: 'Log In with Twitter',
+                  buttonColor: colorPallete.transparantColor!,
+                  lineColor: colorPallete.mainBlueColor,
+                  textColor: colorPallete.accentBlueColor,
+                  image:
+                      'lib/presentation/shared/assets/images/ic_login_twitter.svg',
+                  onPress: () => null,
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 3 * 2,
+                margin: EdgeInsets.symmetric(vertical: 8),
+                child: ButtonWithIcon(
+                  textButton: 'Log In with Yahoo',
+                  buttonColor: colorPallete.transparantColor!,
+                  lineColor: Colors.deepPurple,
+                  textColor: Colors.deepPurple[900]!,
+                  image:
+                      'lib/presentation/shared/assets/images/ic_login_yahoo.svg',
+                  onPress: () => null,
                 ),
               ),
               Container(
@@ -74,5 +133,13 @@ class _MainScreenState extends State<MainScreen> {
         builder: (BuildContext context) {
           return SignUpScreen();
         });
+  }
+
+  void loginWithGoogle() async {
+    AuthController().login().then((value) {
+      setState(() {
+        emailLogin = value!.email!;
+      });
+    });
   }
 }
