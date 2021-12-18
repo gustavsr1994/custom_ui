@@ -77,7 +77,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                       textColor: colorPallete.accentRedColor,
                       image:
                           'lib/presentation/shared/assets/images/ic_barcode.svg',
-                      onPress: () => navigateToCart(),
+                      onPress: () => null,
                     )
                   ],
                 ),

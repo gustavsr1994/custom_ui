@@ -57,46 +57,6 @@ class _MainScreenState extends State<MainScreen> {
                   },
                 ),
               ),
-              Text('Email : $emailLogin'),
-              Container(
-                width: MediaQuery.of(context).size.width / 3 * 2,
-                margin: EdgeInsets.symmetric(vertical: 8),
-                child: ButtonWithIcon(
-                  textButton: 'Log In with Facebook',
-                  buttonColor: colorPallete.transparantColor!,
-                  lineColor: colorPallete.mainBlueColor,
-                  textColor: colorPallete.accentBlueColor,
-                  image:
-                      'lib/presentation/shared/assets/images/ic_login_facebook.svg',
-                  onPress: () => null,
-                ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width / 3 * 2,
-                margin: EdgeInsets.symmetric(vertical: 8),
-                child: ButtonWithIcon(
-                  textButton: 'Log In with Twitter',
-                  buttonColor: colorPallete.transparantColor!,
-                  lineColor: colorPallete.mainBlueColor,
-                  textColor: colorPallete.accentBlueColor,
-                  image:
-                      'lib/presentation/shared/assets/images/ic_login_twitter.svg',
-                  onPress: () => null,
-                ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width / 3 * 2,
-                margin: EdgeInsets.symmetric(vertical: 8),
-                child: ButtonWithIcon(
-                  textButton: 'Log In with Yahoo',
-                  buttonColor: colorPallete.transparantColor!,
-                  lineColor: Colors.deepPurple,
-                  textColor: Colors.deepPurple[900]!,
-                  image:
-                      'lib/presentation/shared/assets/images/ic_login_yahoo.svg',
-                  onPress: () => null,
-                ),
-              ),
               Container(
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 margin: EdgeInsets.symmetric(vertical: 8),
