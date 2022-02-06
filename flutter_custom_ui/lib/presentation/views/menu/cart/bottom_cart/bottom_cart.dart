@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_ui/domain/entities/cart_entity.dart';
+import 'package:flutter_custom_ui/presentation/controllers/cart/cart_controller.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
 import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/button_with_icon.dart';
@@ -7,11 +8,11 @@ import 'package:flutter_custom_ui/presentation/shared/widgets/card/card_cart.dar
 import 'package:get/get.dart';
 
 class BottomCart extends StatelessWidget {
-  final List<CartEntity>? listCart;
   final int? totalAmount;
-  BottomCart({this.listCart, this.totalAmount});
+  BottomCart({this.totalAmount});
 
   final colorPallete = ColorsPallete();
+  final controller = Get.put(CartController());
 
   @override
   Widget build(BuildContext context) {
@@ -27,62 +28,81 @@ class BottomCart extends StatelessWidget {
                 topRight: Radius.circular(15.0)),
           ),
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Container(
-                      width: 30,
-                      height: 5,
-                      margin: EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                        color: ColorsPallete().mainRedColor,
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                      )),
-                ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(
-                    'Cart',
-                    style: textMediumColor(
-                        boldCondition: true,
-                        color: colorPallete.accentRedColor),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                for (var index = 0; index < listCart!.length; index++)
-                  CardCart(
-                    cartProduct: listCart![index],
-                  ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Text('Total : $totalAmount', style: textLargeColor(boldCondition: true, color: colorPallete.accentBlueColor),),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                        child: ButtonWithIcon(
-                            textButton: 'Check Out',
-                            buttonColor: colorPallete.mainRedColor,
-                            lineColor: colorPallete.mainRedColor,
-                            textColor: colorPallete.transparantColor!,
-                            image: 'lib/presentation/shared/assets/images/ic_arrow_right.svg',
-                            onPress: () => navigateToCheckOut(context, listCart!)),
+              child: controller.obx((state) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: Container(
+                            width: 30,
+                            height: 5,
+                            margin: EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                              color: ColorsPallete().mainRedColor,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
+                            )),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Cart',
+                              style: textLargeColor(
+                                  boldCondition: true,
+                                  color: colorPallete.accentRedColor),
+                            ),
+                            InkWell(
+                                onTap: () {
+                                  Get.back();
+                                },
+                                child: Icon(Icons.close))
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      for (var index = 0;
+                          index < state!.listCart!.length;
+                          index++)
+                        CardCart(
+                          cartProduct: state.listCart![index],
+                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Text(
+                              'Total : $totalAmount',
+                              style: textLargeColor(
+                                  boldCondition: true,
+                                  color: colorPallete.accentBlueColor),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 8, horizontal: 8),
+                              child: ButtonWithIcon(
+                                  textButton: 'Check Out',
+                                  buttonColor: colorPallete.mainRedColor,
+                                  lineColor: colorPallete.mainRedColor,
+                                  textColor: colorPallete.transparantColor!,
+                                  image:
+                                      'lib/presentation/shared/assets/images/ic_arrow_right.svg',
+                                  onPress: () => navigateToCheckOut(
+                                      context, state.listCart!)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ))),
         ),
       ),
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_ui/domain/entities/cart_entity.dart';
+import 'package:flutter_custom_ui/presentation/controllers/cart/cart_controller.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/text_style.dart';
+import 'package:get/get.dart';
 
 class CardCart extends StatelessWidget {
   final CartEntity? cartProduct;
@@ -10,6 +12,7 @@ class CardCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var colorPallete = ColorsPallete();
+    final controller = Get.put(CartController());
     return Card(
       margin: EdgeInsets.all(8),
       elevation: 3,
@@ -53,14 +56,18 @@ class CardCart extends StatelessWidget {
                             Icons.minimize_outlined,
                             color: Colors.red,
                           ),
-                          onPressed: null),
+                          onPressed: () {
+                            controller.minusQty(cartProduct!);
+                          }),
                       Text(cartProduct!.qty.toString()),
                       IconButton(
                           icon: Icon(
                             Icons.add,
                             color: Colors.green,
                           ),
-                          onPressed: null),
+                          onPressed: () {
+                            controller.addQty(cartProduct!);
+                          }),
                     ],
                   )
                 ],

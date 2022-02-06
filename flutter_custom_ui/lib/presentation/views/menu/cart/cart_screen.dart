@@ -37,36 +37,34 @@ class _CartScreenState extends State<CartScreen> {
                 boldCondition: true, color: colorPallete.transparantColor),
           ),
           actions: [
-            GetX<CartController>(builder: (controller) {
-              return Stack(
-                children: [
-                  IconButton(
-                      icon: SvgPicture.asset(
-                        'lib/presentation/shared/assets/images/ic_trolley.svg',
-                        color: colorPallete.transparantColor,
-                      ),
-                      onPressed: () =>
-                          bottomDialogCart(context, controller.listCart)),
-                  Positioned(
-                      right: 2,
-                      bottom: 2,
-                      child: Container(
-                        padding: EdgeInsets.all(6),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: colorPallete.accentBlueColor),
-                        child: Center(
-                          child: Text(
-                            controller.listCart.length.toString(),
-                            style: textSmallColor(
-                                boldCondition: true,
-                                color: colorPallete.transparantColor),
-                          ),
+            controller.obx((state) => Stack(
+                  children: [
+                    IconButton(
+                        icon: SvgPicture.asset(
+                          'lib/presentation/shared/assets/images/ic_trolley.svg',
+                          color: colorPallete.transparantColor,
                         ),
-                      ))
-                ],
-              );
-            })
+                        onPressed: () =>
+                            bottomDialogCart(context, state!.listCart!)),
+                    Positioned(
+                        right: 2,
+                        bottom: 2,
+                        child: Container(
+                          padding: EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: colorPallete.accentBlueColor),
+                          child: Center(
+                            child: Text(
+                              state!.listCart!.length.toString(),
+                              style: textSmallColor(
+                                  boldCondition: true,
+                                  color: colorPallete.transparantColor),
+                            ),
+                          ),
+                        ))
+                  ],
+                ))
           ],
         ),
         body: Stack(
@@ -106,25 +104,20 @@ class _CartScreenState extends State<CartScreen> {
                 SizedBox(
                   height: 80,
                 ),
-                GetX<CartController>(
-                  init: CartController(),
-                  builder: (controllers) {
-                    return Expanded(
+                controller.obx((state) => Expanded(
                       flex: 1,
                       child: StaggeredGridView.countBuilder(
                         crossAxisCount: 4,
-                        itemCount: controllers.listProduct.length,
+                        itemCount: state!.listProduct!.length,
                         primary: false,
                         crossAxisSpacing: 4.0,
                         mainAxisSpacing: 4.0,
                         itemBuilder: (context, index) => CardProduct(
-                          product: controllers.listProduct[index],
+                          product: state.listProduct![index],
                         ),
                         staggeredTileBuilder: (index) => StaggeredTile.fit(2),
                       ),
-                    );
-                  },
-                ),
+                    ))
               ],
             ),
           ],
@@ -153,7 +146,6 @@ class _CartScreenState extends State<CartScreen> {
         isDismissible: false,
         builder: (BuildContext context) {
           return BottomCart(
-            listCart: listCart,
             totalAmount: totalAmount,
           );
         });

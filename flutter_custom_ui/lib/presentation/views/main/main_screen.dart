@@ -33,17 +33,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width / 3 * 2,
-                margin: EdgeInsets.symmetric(vertical: 8),
-                child: LineButton(
-                  textButton: 'Log In',
-                  buttonColor: colorPallete.transparantColor!,
-                  lineColor: colorPallete.mainRedColor,
-                  textColor: colorPallete.accentRedColor,
-                  onPress: () => bottomDialogLogin(context),
-                ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width / 3 * 2,
+                height: 50,
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: ButtonWithIcon(
                   textButton: 'Log In with GMail',
@@ -59,6 +49,19 @@ class _MainScreenState extends State<MainScreen> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width / 3 * 2,
+                height: 50,
+                margin: EdgeInsets.symmetric(vertical: 8),
+                child: LineButton(
+                  textButton: 'Log In',
+                  buttonColor: colorPallete.transparantColor!,
+                  lineColor: colorPallete.mainRedColor,
+                  textColor: colorPallete.accentRedColor,
+                  onPress: () => bottomDialogLogin(context),
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 3 * 2,
+                height: 50,
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: LineButton(
                   textButton: 'Sign Up',
