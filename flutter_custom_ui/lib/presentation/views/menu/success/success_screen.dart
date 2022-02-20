@@ -13,12 +13,18 @@ class SuccessScreen extends StatelessWidget {
       backgroundColor: color.transparantColor,
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Lottie.asset(
-                'lib/presentation/shared/assets/animations/success_anim.json'),
-            Text('Payment Success', style: textLargeColor(boldCondition: true, color: Colors.black),),
+                'lib/presentation/shared/assets/animations/success_anim.json',
+                height: MediaQuery.of(context).size.height / 3,
+                width: MediaQuery.of(context).size.width / 3),
+            Text(
+              'Payment Success',
+              style: textLargeColor(boldCondition: true, color: Colors.black),
+            ),
             LineButton(
-              buttonColor: color.mainBlueColor,
+              buttonColor: color.accentBlueColor,
               lineColor: color.transparantColor!,
               textButton: 'Main Menu',
               textColor: color.transparantColor!,

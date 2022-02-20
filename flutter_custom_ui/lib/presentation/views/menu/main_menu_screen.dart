@@ -108,7 +108,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                   textColor: colorPallete.accentRedColor,
                   image:
                       'lib/presentation/shared/assets/images/ic_arrow_right.svg',
-                  onPress: () => null,
+                  onPress: () => navigateToChart(),
                 ),
               ),
               Container(
@@ -133,5 +133,9 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
 
   void navigateToCart() {
     Get.toNamed('/cart');
+  }
+
+  void navigateToChart() {
+    Get.toNamed('/chart');
   }
 }
