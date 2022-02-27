@@ -29,7 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> with ValidatorCustom {
         child: Container(
           height: MediaQuery.of(context).size.height * 0.7,
           decoration: BoxDecoration(
-            color: colorPallete.mainRedColor,
+            color: colorPallete.mainColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15.0),
                 topRight: Radius.circular(15.0)),
@@ -38,13 +38,13 @@ class _SignUpScreenState extends State<SignUpScreen> with ValidatorCustom {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               Center(
+                Center(
                   child: Container(
                       width: 30,
                       height: 5,
                       margin: EdgeInsets.all(4),
                       decoration: BoxDecoration(
-                        color: ColorsPallete().mainBlueColor,
+                        color: ColorsPallete().mainColor,
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       )),
                 ),
@@ -54,8 +54,7 @@ class _SignUpScreenState extends State<SignUpScreen> with ValidatorCustom {
                   child: Text(
                     'Sign Up Screen',
                     style: textMediumColor(
-                        boldCondition: true,
-                        color: colorPallete.transparantColor),
+                        boldCondition: true, color: colorPallete.fontColor),
                   ),
                 ),
                 SizedBox(
@@ -67,9 +66,9 @@ class _SignUpScreenState extends State<SignUpScreen> with ValidatorCustom {
                     focusNode: usernameFocus,
                     obscureText: false,
                     labelText: 'Username',
-                    fillColor: colorPallete.mainRedColor,
-                    cursorColor: colorPallete.transparantColor!,
-                    borderColor: colorPallete.accentBlueColor,
+                    fillColor: colorPallete.mainColor,
+                    cursorColor: colorPallete.accentColor,
+                    borderColor: colorPallete.secondColor,
                     onSubmitted: (term) {
                       usernameFocus.unfocus();
                       FocusScope.of(context).requestFocus(passwordFocus);
@@ -81,15 +80,15 @@ class _SignUpScreenState extends State<SignUpScreen> with ValidatorCustom {
                   focusNode: passwordFocus,
                   obscureText: obscureStatus,
                   labelText: 'Password',
-                  fillColor: colorPallete.mainRedColor,
-                  cursorColor: colorPallete.transparantColor!,
-                  borderColor: colorPallete.accentBlueColor,
+                  fillColor: colorPallete.mainColor,
+                  cursorColor: colorPallete.accentColor,
+                  borderColor: colorPallete.secondColor,
                   onSubmitted: (term) {
                     passwordFocus.unfocus();
                   },
                   validator: (value) => validateRequired(value),
                   suffixIcon: IconButton(
-                    color: colorPallete.transparantColor!,
+                      color: colorPallete.accentColor,
                       icon: Icon(obscureStatus
                           ? Icons.visibility_off
                           : Icons.visibility),
@@ -105,9 +104,9 @@ class _SignUpScreenState extends State<SignUpScreen> with ValidatorCustom {
                     margin: EdgeInsets.symmetric(vertical: 8),
                     child: LineButton(
                         textButton: 'Sign Up',
-                        buttonColor: colorPallete.mainRedColor,
-                        lineColor: colorPallete.transparantColor!,
-                        textColor: colorPallete.transparantColor!,
+                        buttonColor: colorPallete.mainColor,
+                        lineColor: colorPallete.secondColor,
+                        textColor: colorPallete.accentColor,
                         onPress: () => navigateLogin()),
                   ),
                 ),

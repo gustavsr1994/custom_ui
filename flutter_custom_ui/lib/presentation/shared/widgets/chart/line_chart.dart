@@ -1,9 +1,11 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 
 class LineChartCustom extends StatelessWidget {
   LineChartCustom();
 
+  final colorPallete = ColorsPallete();
   @override
   Widget build(BuildContext context) {
     return LineChart(LineChartData(
@@ -26,12 +28,14 @@ class LineChartCustom extends StatelessWidget {
       ];
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
         isCurved: true,
-        colors: [const Color(0xff4af699)],
-        barWidth: 8,
+        colors: [
+          colorPallete.accentColor,
+        ],
+        barWidth: 3,
         isStrokeCapRound: true,
         dotData: FlDotData(show: false),
         belowBarData: BarAreaData(show: false),
-        spots: const [
+        spots: [
           FlSpot(1, 1),
           FlSpot(3, 1.5),
           FlSpot(5, 1.4),
@@ -75,8 +79,8 @@ class LineChartCustom extends StatelessWidget {
         margin: 8,
         interval: 1,
         reservedSize: 40,
-        getTextStyles: (context, value) => const TextStyle(
-          color: Color(0xff75729e),
+        getTextStyles: (context, value) => TextStyle(
+          color: colorPallete.fontColor,
           fontWeight: FontWeight.bold,
           fontSize: 14,
         ),
@@ -86,8 +90,8 @@ class LineChartCustom extends StatelessWidget {
         reservedSize: 22,
         margin: 10,
         interval: 1,
-        getTextStyles: (context, value) => const TextStyle(
-          color: Color(0xff72719b),
+        getTextStyles: (context, value) => TextStyle(
+          color: colorPallete.fontColor,
           fontWeight: FontWeight.bold,
           fontSize: 16,
         ),
@@ -105,9 +109,9 @@ class LineChartCustom extends StatelessWidget {
       );
   FlBorderData get borderData => FlBorderData(
         show: true,
-        border: const Border(
-          bottom: BorderSide(color: Color(0xff4e4965), width: 4),
-          left: BorderSide(color: Colors.transparent),
+        border: Border(
+          bottom: BorderSide(color: colorPallete.accentColor, width: 2),
+          left: BorderSide(color: colorPallete.accentColor, width: 2),
           right: BorderSide(color: Colors.transparent),
           top: BorderSide(color: Colors.transparent),
         ),

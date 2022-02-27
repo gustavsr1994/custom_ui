@@ -35,10 +35,13 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(
+          color: colorPallete.accentColor,
+        ),
         title: Text(
           'Checkout',
           style: textLargeColor(
-              boldCondition: true, color: colorPallete.transparantColor),
+              boldCondition: true, color: colorPallete.fontColor),
         ),
       ),
       body: SingleChildScrollView(
@@ -76,14 +79,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                       Text(
                         'Name Product',
                         style: textLargeColor(
-                            boldCondition: true,
-                            color: colorPallete.mainRedColor),
+                            boldCondition: true, color: colorPallete.fontColor),
                       ),
                       Text(
                         'Total Amount',
                         style: textLargeColor(
-                            boldCondition: true,
-                            color: colorPallete.mainRedColor),
+                            boldCondition: true, color: colorPallete.fontColor),
                       ),
                     ],
                   ),
@@ -121,7 +122,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
               child: Text(
                 'Courier',
                 style: textLargeColor(
-                    boldCondition: true, color: colorPallete.accentRedColor),
+                    boldCondition: true, color: colorPallete.fontColor),
               ),
             ),
             SizedBox(
@@ -159,7 +160,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
               child: Text(
                 'Payment Method',
                 style: textLargeColor(
-                    boldCondition: true, color: colorPallete.accentRedColor),
+                    boldCondition: true, color: colorPallete.fontColor),
               ),
             ),
             SizedBox(
@@ -193,13 +194,13 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
               height: 35,
             ),
             InkWell(
-              onTap: ()=> navigateToSuccess(),
-                          child: Container(
+              onTap: () => navigateToSuccess(),
+              child: Container(
                 width: MediaQuery.of(context).size.width,
                 margin: EdgeInsets.all(8),
-                  padding: EdgeInsets.all(16),
+                padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                    color: colorPallete.mainRedColor,
+                    color: colorPallete.mainColor,
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(8)),
                 child: Row(

@@ -37,9 +37,9 @@ class _MainScreenState extends State<MainScreen> {
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: ButtonWithIcon(
                   textButton: 'Log In with GMail',
-                  buttonColor: colorPallete.transparantColor!,
-                  lineColor: colorPallete.mainRedColor,
-                  textColor: colorPallete.accentRedColor,
+                  buttonColor: colorPallete.whiteColor,
+                  lineColor: colorPallete.accentColor,
+                  textColor: colorPallete.fontColor,
                   image:
                       'lib/presentation/shared/assets/images/ic_login_google.svg',
                   onPress: () {
@@ -53,9 +53,9 @@ class _MainScreenState extends State<MainScreen> {
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: LineButton(
                   textButton: 'Log In',
-                  buttonColor: colorPallete.transparantColor!,
-                  lineColor: colorPallete.mainRedColor,
-                  textColor: colorPallete.accentRedColor,
+                  buttonColor: colorPallete.whiteColor,
+                  lineColor: colorPallete.accentColor,
+                  textColor: colorPallete.fontColor,
                   onPress: () => bottomDialogLogin(context),
                 ),
               ),
@@ -65,9 +65,9 @@ class _MainScreenState extends State<MainScreen> {
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: LineButton(
                   textButton: 'Sign Up',
-                  buttonColor: colorPallete.accentRedColor,
-                  lineColor: colorPallete.mainRedColor,
-                  textColor: colorPallete.transparantColor!,
+                  buttonColor: colorPallete.whiteColor,
+                  lineColor: colorPallete.accentColor,
+                  textColor: colorPallete.fontColor,
                   onPress: () => bottomDialogSignUp(context),
                 ),
               ),

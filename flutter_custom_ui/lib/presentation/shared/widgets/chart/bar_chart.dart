@@ -6,6 +6,8 @@ class BarChartCustom extends StatelessWidget {
   final int touchedIndex = -1;
   BarChartCustom();
 
+  final colorPallete = ColorsPallete();
+
   @override
   Widget build(BuildContext context) {
     return BarChart(mainBarData());
@@ -45,7 +47,7 @@ class BarChartCustom extends StatelessWidget {
               }
               return BarTooltipItem(
                 weekDay + '\n',
-                const TextStyle(
+                TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -53,7 +55,7 @@ class BarChartCustom extends StatelessWidget {
                 children: <TextSpan>[
                   TextSpan(
                     text: (rod.y - 1).toString(),
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.yellow,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -70,8 +72,10 @@ class BarChartCustom extends StatelessWidget {
         topTitles: SideTitles(showTitles: false),
         bottomTitles: SideTitles(
           showTitles: true,
-          getTextStyles: (context, value) => const TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+          getTextStyles: (context, value) => TextStyle(
+              color: colorPallete.fontColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 14),
           margin: 16,
           getTitles: (double value) {
             switch (value.toInt()) {
@@ -133,7 +137,6 @@ class BarChartCustom extends StatelessWidget {
     bool isTouched = false,
     Color barColor = Colors.white,
     double width = 22,
-    List<int> showTooltips = const [],
   }) {
     return BarChartGroupData(
       x: x,
@@ -143,16 +146,15 @@ class BarChartCustom extends StatelessWidget {
           colors: isTouched ? [Colors.yellow] : [barColor],
           width: width,
           borderSide: isTouched
-              ? BorderSide(color: ColorsPallete().accentRedColor, width: 1)
-              : const BorderSide(color: Colors.white, width: 0),
+              ? BorderSide(color: ColorsPallete().mainColor, width: 1)
+              : BorderSide(color: Colors.white, width: 0),
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
             y: 20,
-            colors: [ColorsPallete().accentBlueColor],
+            colors: [ColorsPallete().accentColor],
           ),
         ),
       ],
-      showingTooltipIndicators: showTooltips,
     );
   }
 }

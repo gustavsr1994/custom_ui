@@ -22,7 +22,7 @@ class BottomCart extends StatelessWidget {
         child: Container(
           height: MediaQuery.of(context).size.height * 0.5,
           decoration: BoxDecoration(
-            color: colorPallete.transparantColor,
+            color: colorPallete.whiteColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15.0),
                 topRight: Radius.circular(15.0)),
@@ -37,7 +37,7 @@ class BottomCart extends StatelessWidget {
                             height: 5,
                             margin: EdgeInsets.all(4),
                             decoration: BoxDecoration(
-                              color: ColorsPallete().mainRedColor,
+                              color: ColorsPallete().mainColor,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8)),
                             )),
@@ -52,7 +52,7 @@ class BottomCart extends StatelessWidget {
                               'Cart',
                               style: textLargeColor(
                                   boldCondition: true,
-                                  color: colorPallete.accentRedColor),
+                                  color: colorPallete.fontColor),
                             ),
                             InkWell(
                                 onTap: () {
@@ -80,7 +80,7 @@ class BottomCart extends StatelessWidget {
                               'Total : $totalAmount',
                               style: textLargeColor(
                                   boldCondition: true,
-                                  color: colorPallete.accentBlueColor),
+                                  color: colorPallete.fontColor),
                             ),
                           ),
                           Align(
@@ -90,9 +90,9 @@ class BottomCart extends StatelessWidget {
                                   vertical: 8, horizontal: 8),
                               child: ButtonWithIcon(
                                   textButton: 'Check Out',
-                                  buttonColor: colorPallete.mainRedColor,
-                                  lineColor: colorPallete.mainRedColor,
-                                  textColor: colorPallete.transparantColor!,
+                                  buttonColor: colorPallete.mainColor,
+                                  lineColor: colorPallete.secondColor,
+                                  textColor: colorPallete.fontColor,
                                   image:
                                       'lib/presentation/shared/assets/images/ic_arrow_right.svg',
                                   onPress: () => navigateToCheckOut(

@@ -16,7 +16,7 @@ class BottomCourier extends StatelessWidget {
         child: Container(
           height: MediaQuery.of(context).size.height * 0.5,
           decoration: BoxDecoration(
-            color: colorPallete.transparantColor,
+            color: colorPallete.whiteColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15.0),
                 topRight: Radius.circular(15.0)),
@@ -31,7 +31,7 @@ class BottomCourier extends StatelessWidget {
                       height: 5,
                       margin: EdgeInsets.all(4),
                       decoration: BoxDecoration(
-                        color: colorPallete.mainRedColor,
+                        color: colorPallete.mainColor,
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       )),
                 ),
@@ -41,8 +41,7 @@ class BottomCourier extends StatelessWidget {
                   child: Text(
                     'List Courier',
                     style: textMediumColor(
-                        boldCondition: true,
-                        color: colorPallete.accentRedColor),
+                        boldCondition: true, color: colorPallete.fontColor),
                   ),
                 ),
                 SizedBox(

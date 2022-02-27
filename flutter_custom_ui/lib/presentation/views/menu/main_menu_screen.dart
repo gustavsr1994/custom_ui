@@ -18,7 +18,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
         title: Text(
           'Simple App',
           style: textLargeColor(
-              boldCondition: true, color: colorPallete.transparantColor),
+              boldCondition: true, color: colorPallete.accentColor),
         ),
       ),
       body: Center(
@@ -30,7 +30,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 margin: EdgeInsets.symmetric(vertical: 8),
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                    color: colorPallete.mainRedColor,
+                    color: colorPallete.mainColor,
                     borderRadius: BorderRadius.circular(10)),
                 child: Column(
                   children: [
@@ -41,12 +41,12 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                           'Check In',
                           style: textLargeColor(
                               boldCondition: true,
-                              color: colorPallete.transparantColor),
+                              color: colorPallete.accentColor),
                         ),
                         Text('Check Out',
                             style: textLargeColor(
                                 boldCondition: true,
-                                color: colorPallete.transparantColor)),
+                                color: colorPallete.accentColor)),
                       ],
                     ),
                     SizedBox(
@@ -59,22 +59,22 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                           '--:--',
                           style: textLargeColor(
                               boldCondition: false,
-                              color: colorPallete.transparantColor),
+                              color: colorPallete.fontColor),
                         ),
                         Text('--:--',
                             style: textLargeColor(
                                 boldCondition: false,
-                                color: colorPallete.transparantColor)),
+                                color: colorPallete.fontColor)),
                       ],
                     ),
                     SizedBox(
                       height: 16,
                     ),
                     ButtonWithIcon(
-                      buttonColor: colorPallete.transparantColor!,
-                      lineColor: colorPallete.mainRedColor,
+                      buttonColor: colorPallete.whiteColor,
+                      lineColor: colorPallete.secondColor,
                       textButton: 'Absent',
-                      textColor: colorPallete.accentRedColor,
+                      textColor: colorPallete.fontColor,
                       image:
                           'lib/presentation/shared/assets/images/ic_barcode.svg',
                       onPress: () => null,
@@ -89,10 +89,10 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: ButtonWithIcon(
-                  buttonColor: colorPallete.transparantColor!,
-                  lineColor: colorPallete.mainRedColor,
+                  buttonColor: colorPallete.mainColor,
+                  lineColor: colorPallete.secondColor,
                   textButton: 'Cart',
-                  textColor: colorPallete.accentRedColor,
+                  textColor: colorPallete.fontColor,
                   image:
                       'lib/presentation/shared/assets/images/ic_arrow_right.svg',
                   onPress: () => navigateToCart(),
@@ -102,10 +102,10 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: ButtonWithIcon(
-                  buttonColor: colorPallete.transparantColor!,
-                  lineColor: colorPallete.mainRedColor,
+                  buttonColor: colorPallete.mainColor,
+                  lineColor: colorPallete.secondColor,
                   textButton: 'Chart',
-                  textColor: colorPallete.accentRedColor,
+                  textColor: colorPallete.fontColor,
                   image:
                       'lib/presentation/shared/assets/images/ic_arrow_right.svg',
                   onPress: () => navigateToChart(),
@@ -115,10 +115,10 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: ButtonWithIcon(
-                  buttonColor: colorPallete.transparantColor!,
-                  lineColor: colorPallete.mainRedColor,
+                  buttonColor: colorPallete.mainColor,
+                  lineColor: colorPallete.secondColor,
                   textButton: 'About Us',
-                  textColor: colorPallete.accentRedColor,
+                  textColor: colorPallete.fontColor,
                   image:
                       'lib/presentation/shared/assets/images/ic_arrow_right.svg',
                   onPress: () => null,

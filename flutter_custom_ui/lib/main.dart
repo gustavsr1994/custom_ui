@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       getPages: listPages,
       theme: ThemeData(
           fontFamily: 'Sastrawan',
-          appBarTheme: AppBarTheme(color: ColorsPallete().mainRedColor)),
+          appBarTheme: AppBarTheme(color: ColorsPallete().mainColor)),
       home: SplashScreen(),
     );
   }

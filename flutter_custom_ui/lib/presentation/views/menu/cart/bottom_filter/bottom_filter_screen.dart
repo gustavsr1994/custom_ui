@@ -18,7 +18,7 @@ class BottomFilterScreen extends StatelessWidget {
         child: Container(
           height: MediaQuery.of(context).size.height * 0.5,
           decoration: BoxDecoration(
-            color: colorPallete.transparantColor,
+            color: colorPallete.whiteColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15.0),
                 topRight: Radius.circular(15.0)),
@@ -33,7 +33,7 @@ class BottomFilterScreen extends StatelessWidget {
                       height: 5,
                       margin: EdgeInsets.all(4),
                       decoration: BoxDecoration(
-                        color: ColorsPallete().mainRedColor,
+                        color: ColorsPallete().mainColor,
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       )),
                 ),
@@ -43,8 +43,7 @@ class BottomFilterScreen extends StatelessWidget {
                   child: Text(
                     'Filter by',
                     style: textMediumColor(
-                        boldCondition: true,
-                        color: colorPallete.accentRedColor),
+                        boldCondition: true, color: colorPallete.fontColor),
                   ),
                 ),
                 SizedBox(
@@ -72,7 +71,7 @@ class BottomFilterScreen extends StatelessWidget {
                                       backgroundColor:
                                           controller.positionSelected.value ==
                                                   index
-                                              ? colorPallete.mainRedColor
+                                              ? colorPallete.mainColor
                                               : Colors.grey[300],
                                       label: Text(
                                         listCategories[index],
@@ -81,8 +80,8 @@ class BottomFilterScreen extends StatelessWidget {
                                             color: controller.positionSelected
                                                         .value ==
                                                     index
-                                                ? colorPallete.accentBlueColor
-                                                : colorPallete.accentRedColor),
+                                                ? colorPallete.accentColor
+                                                : colorPallete.secondColor),
                                       ));
                                 },
                               )),
@@ -98,18 +97,18 @@ class BottomFilterScreen extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 8),
                       child: LineButton(
                           textButton: 'Filter',
-                          buttonColor: colorPallete.transparantColor!,
-                          lineColor: colorPallete.mainRedColor,
-                          textColor: colorPallete.accentRedColor,
+                          buttonColor: colorPallete.mainColor,
+                          lineColor: colorPallete.secondColor,
+                          textColor: colorPallete.fontColor,
                           onPress: () => null),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 8),
                       child: LineButton(
                           textButton: 'Reset',
-                          buttonColor: colorPallete.mainRedColor,
-                          lineColor: colorPallete.mainRedColor,
-                          textColor: colorPallete.accentBlueColor,
+                          buttonColor: colorPallete.mainColor,
+                          lineColor: colorPallete.secondColor,
+                          textColor: colorPallete.fontColor,
                           onPress: () => controller.categorySelected(0)),
                     ),
                   ],

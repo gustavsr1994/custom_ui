@@ -31,10 +31,13 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: BackButton(
+            color: colorPallete.accentColor,
+          ),
           title: Text(
             'List Product',
             style: textLargeColor(
-                boldCondition: true, color: colorPallete.transparantColor),
+                boldCondition: true, color: colorPallete.accentColor),
           ),
           actions: [
             controller.obx((state) => Stack(
@@ -42,7 +45,7 @@ class _CartScreenState extends State<CartScreen> {
                     IconButton(
                         icon: SvgPicture.asset(
                           'lib/presentation/shared/assets/images/ic_trolley.svg',
-                          color: colorPallete.transparantColor,
+                          color: colorPallete.accentColor,
                         ),
                         onPressed: () =>
                             bottomDialogCart(context, state!.listCart!)),
@@ -53,13 +56,13 @@ class _CartScreenState extends State<CartScreen> {
                           padding: EdgeInsets.all(6),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: colorPallete.accentBlueColor),
+                              color: colorPallete.mainColor),
                           child: Center(
                             child: Text(
                               state!.listCart!.length.toString(),
                               style: textSmallColor(
                                   boldCondition: true,
-                                  color: colorPallete.transparantColor),
+                                  color: colorPallete.accentColor),
                             ),
                           ),
                         ))
@@ -83,7 +86,7 @@ class _CartScreenState extends State<CartScreen> {
                       suffixIcon:
                           IconButton(icon: Icon(Icons.search), onPressed: null),
                       obscureText: false,
-                      fillColor: colorPallete.transparantColor!,
+                      fillColor: colorPallete.whiteColor,
                       validator: (value) => null),
                 ),
                 Expanded(

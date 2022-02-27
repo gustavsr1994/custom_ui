@@ -41,7 +41,7 @@ class CardProduct extends StatelessWidget {
                       right: 2,
                       child: SvgPicture.asset(
                         'lib/presentation/shared/assets/images/ic_price_tag.svg',
-                        color: colorPallete.accentBlueColor,
+                        color: colorPallete.accentColor,
                         fit: BoxFit.contain,
                       ),
                     )
@@ -57,7 +57,7 @@ class CardProduct extends StatelessWidget {
                     style: textMediumColor(
                         boldCondition: false,
                         strikeThrough: product!.discount == 0 ? null : true,
-                        color: colorPallete.accentRedColor)),
+                        color: colorPallete.fontColor)),
                 SizedBox(
                   height: 8,
                 ),
@@ -66,8 +66,7 @@ class CardProduct extends StatelessWidget {
                     : Text(
                         'Price : ${(product!.price - product!.discount)}',
                         style: textMediumColor(
-                            boldCondition: true,
-                            color: colorPallete.accentRedColor),
+                            boldCondition: true, color: colorPallete.fontColor),
                       )
               ],
             ),
@@ -78,10 +77,10 @@ class CardProduct extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(8),
                   child: LineButton(
-                    buttonColor: colorPallete.mainRedColor,
-                    lineColor: colorPallete.mainRedColor,
+                    buttonColor: colorPallete.mainColor,
+                    lineColor: colorPallete.accentColor,
                     textButton: 'Add to Cart',
-                    textColor: colorPallete.transparantColor!,
+                    textColor: colorPallete.accentColor,
                     onPress: () => controller.addToCart(product!),
                   ),
                 )

@@ -29,7 +29,7 @@ class CardCart extends StatelessWidget {
                 child: Text(
                   cartProduct!.nameProduct,
                   style: textLargeColor(
-                      boldCondition: true, color: colorPallete.accentRedColor),
+                      boldCondition: true, color: colorPallete.fontColor),
                 ),
               ),
               SizedBox(
@@ -44,8 +44,7 @@ class CardCart extends StatelessWidget {
                     child: Text(
                       'Rp ${(cartProduct!.price - cartProduct!.discount) * cartProduct!.qty}',
                       style: textMediumColor(
-                          boldCondition: false,
-                          color: colorPallete.accentRedColor),
+                          boldCondition: false, color: colorPallete.fontColor),
                     ),
                   ),
                   Row(
@@ -79,7 +78,7 @@ class CardCart extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.fromLTRB(16, 0, 0, 8),
               decoration: BoxDecoration(
-                color: colorPallete.mainBlueColor,
+                color: colorPallete.mainColor,
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(10.0),
                     topRight: Radius.circular(10.0)),

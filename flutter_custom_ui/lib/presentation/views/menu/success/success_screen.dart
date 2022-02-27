@@ -10,7 +10,7 @@ class SuccessScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var color = ColorsPallete();
     return Scaffold(
-      backgroundColor: color.transparantColor,
+      backgroundColor: color.whiteColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -24,10 +24,10 @@ class SuccessScreen extends StatelessWidget {
               style: textLargeColor(boldCondition: true, color: Colors.black),
             ),
             LineButton(
-              buttonColor: color.accentBlueColor,
-              lineColor: color.transparantColor!,
+              buttonColor: color.mainColor,
+              lineColor: color.accentColor,
               textButton: 'Main Menu',
-              textColor: color.transparantColor!,
+              textColor: color.accentColor,
               onPress: () => navigateToSuccess(),
             )
           ],

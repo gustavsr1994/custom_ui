@@ -16,13 +16,13 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     _startSplashScreen();
   }
-  
+
   _startSplashScreen() async {
     var _duration = Duration(seconds: 5);
     return Timer(_duration, _navigationPage);
   }
 
- void _navigationPage() {
+  void _navigationPage() {
     Get.offNamed('/main');
   }
 
@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: ColorsPallete().mainRedColor,
+          backgroundColor: ColorsPallete().mainColor,
           body: Center(
             child: Lottie.asset(
                 'lib/presentation/shared/assets/animations/welcome_screen.json'),
