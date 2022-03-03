@@ -16,14 +16,15 @@ class MapsScreen extends StatefulWidget {
 
 class _MapsScreenState extends State<MapsScreen> {
   TextEditingController searchController = TextEditingController();
-  FocusNode searchFocus = FocusNode();
   late GoogleMapController _googleMapController;
   late Location _location = Location();
+  FocusNode searchFocus = FocusNode();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(-10, 100),
     zoom: 10,
   );
+  var statusInitial = true;
   var colorPallete = ColorsPallete();
   var mapController = Get.put(MapController());
   var placeController = Get.put(PlaceController());
@@ -41,10 +42,11 @@ class _MapsScreenState extends State<MapsScreen> {
   void initState() {
     super.initState();
     _location.onLocationChanged.listen((value) {
-      print("latt : ${value.latitude}");
-      mapController.currentLocation(PlaceModel(
-          position: LatLng(value.latitude!, value.longitude!),
-          name: "Current place"));
+      if (statusInitial) {
+        mapController.currentLocation(PlaceModel(
+            position: LatLng(value.latitude!, value.longitude!),
+            name: "Current place"));
+      }
     });
   }
 
@@ -85,6 +87,12 @@ class _MapsScreenState extends State<MapsScreen> {
               child: TextFormField(
                 controller: searchController,
                 keyboardType: TextInputType.text,
+                focusNode: searchFocus,
+                onFieldSubmitted: (value) {
+                  searchFocus.unfocus();
+                  placeController.getListPlace(searchController.text);
+                  bottomSheetAddress();
+                },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -125,17 +133,17 @@ class _MapsScreenState extends State<MapsScreen> {
         context: context,
         builder: (context) => SingleChildScrollView(
             controller: ModalScrollController.of(context),
-            child: placeController.obx(
-                (state) => Container(
-                      height: (MediaQuery.of(context).size.height / 3) + 100,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          titleHeader(),
-                          Divider(
-                            height: 0,
-                          ),
-                          Container(
+            child: Container(
+              height: (MediaQuery.of(context).size.height / 3) + 100,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  titleHeader(),
+                  Divider(
+                    height: 0,
+                  ),
+                  placeController.obx(
+                      (state) => Container(
                             height: MediaQuery.of(context).size.height / 3,
                             child: SingleChildScrollView(
                               child: Column(
@@ -146,10 +154,11 @@ class _MapsScreenState extends State<MapsScreen> {
                                         LatLng current = await placeController
                                             .getDetailPlace(items.idPlace,
                                                 state.collectionPlace!);
-                                        print("Lat :: ${current.latitude}");
-
                                         _onMapCreated(
                                             _googleMapController, current);
+                                        setState(() {
+                                          statusInitial = false;
+                                        });
                                         Navigator.of(context).pop();
                                       },
                                       child: Container(
@@ -181,24 +190,18 @@ class _MapsScreenState extends State<MapsScreen> {
                                 ],
                               ),
                             ),
-                          )
-                        ],
-                      ),
-                    ),
-                onEmpty: Container(
-                  height: MediaQuery.of(context).size.height / 5,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      titleHeader(),
-                      Center(
+                          ),
+                      onEmpty: Center(
                           child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Text("No Data"),
                       )),
-                    ],
-                  ),
-                ))));
+                      onLoading: Center(
+                        child: CircularProgressIndicator(),
+                      ))
+                ],
+              ),
+            )));
   }
 
   Widget titleHeader() {
