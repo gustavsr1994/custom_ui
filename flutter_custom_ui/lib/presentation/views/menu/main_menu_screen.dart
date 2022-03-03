@@ -117,6 +117,19 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 child: ButtonWithIcon(
                   buttonColor: colorPallete.mainColor,
                   lineColor: colorPallete.secondColor,
+                  textButton: 'Maps',
+                  textColor: colorPallete.fontColor,
+                  image:
+                      'lib/presentation/shared/assets/images/ic_arrow_right.svg',
+                  onPress: () => navigateToMap(),
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 3 * 2,
+                margin: EdgeInsets.symmetric(vertical: 8),
+                child: ButtonWithIcon(
+                  buttonColor: colorPallete.mainColor,
+                  lineColor: colorPallete.secondColor,
                   textButton: 'About Us',
                   textColor: colorPallete.fontColor,
                   image:
@@ -137,5 +150,9 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
 
   void navigateToChart() {
     Get.toNamed('/chart');
+  }
+
+  void navigateToMap() {
+    Get.toNamed('/map');
   }
 }
