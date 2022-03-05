@@ -1,4 +1,5 @@
 import 'package:flutter_custom_ui/presentation/views/main/main_screen.dart';
+import 'package:flutter_custom_ui/presentation/views/menu/about/main_about_screen.dart';
 import 'package:flutter_custom_ui/presentation/views/menu/cart/cart_screen.dart';
 import 'package:flutter_custom_ui/presentation/views/menu/chart/chart_screen.dart';
 import 'package:flutter_custom_ui/presentation/views/menu/checkout/checkout_screen.dart';
@@ -16,5 +17,9 @@ var listPages = [
   GetPage(name: '/checkOut', page: () => CheckOutScreen()),
   GetPage(name: '/successPayment', page: () => SuccessScreen()),
   GetPage(name: '/chart', page: () => ChartScreen()),
-  GetPage(name: '/map', page: () => MapsScreen())
+  GetPage(name: '/map', page: () => MapsScreen()),
+  GetPage(
+    name: '/about',
+    page: () => MainAboutScreen(),
+  )
 ];

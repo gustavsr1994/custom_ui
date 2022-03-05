@@ -18,7 +18,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
         title: Text(
           'Simple App',
           style: textLargeColor(
-              boldCondition: true, color: colorPallete.accentColor),
+              boldCondition: true, color: colorPallete.fontColor),
         ),
       ),
       body: Center(
@@ -134,7 +134,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                   textColor: colorPallete.fontColor,
                   image:
                       'lib/presentation/shared/assets/images/ic_arrow_right.svg',
-                  onPress: () => null,
+                  onPress: () => navigateToAbout(),
                 ),
               )
             ],
@@ -154,5 +154,9 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
 
   void navigateToMap() {
     Get.toNamed('/map');
+  }
+
+  void navigateToAbout() {
+    Get.toNamed('/about');
   }
 }
