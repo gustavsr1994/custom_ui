@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       getPages: listPages,
       theme: ThemeData(
-          fontFamily: 'Sastrawan',
+          fontFamily: 'Horseman',
           appBarTheme: AppBarTheme(color: ColorsPallete().mainColor)),
       home: SplashScreen(),
     );

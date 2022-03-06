@@ -110,6 +110,17 @@ class _LoginScreenState extends State<LoginScreen> with ValidatorCustom {
                         onPress: () => navigateLogin()),
                   ),
                 ),
+                Center(
+                  child: Container(
+                      width: MediaQuery.of(context).size.width / 3 * 2,
+                      margin: EdgeInsets.symmetric(vertical: 8),
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                          color: colorPallete.mainColor,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Text(
+                          'Note : Silahkan masukkan username dan password secara random.')),
+                )
               ],
             ),
           ),

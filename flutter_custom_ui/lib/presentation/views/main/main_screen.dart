@@ -51,11 +51,13 @@ class _MainScreenState extends State<MainScreen> {
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 height: 50,
                 margin: EdgeInsets.symmetric(vertical: 8),
-                child: LineButton(
+                child: ButtonWithIcon(
                   textButton: 'Log In',
                   buttonColor: colorPallete.whiteColor,
                   lineColor: colorPallete.accentColor,
                   textColor: colorPallete.fontColor,
+                  image:
+                      'lib/presentation/shared/assets/images/ic_arrow_right.svg',
                   onPress: () => bottomDialogLogin(context),
                 ),
               ),
@@ -63,11 +65,13 @@ class _MainScreenState extends State<MainScreen> {
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 height: 50,
                 margin: EdgeInsets.symmetric(vertical: 8),
-                child: LineButton(
+                child: ButtonWithIcon(
                   textButton: 'Sign Up',
                   buttonColor: colorPallete.whiteColor,
                   lineColor: colorPallete.accentColor,
                   textColor: colorPallete.fontColor,
+                  image:
+                      'lib/presentation/shared/assets/images/ic_arrow_right.svg',
                   onPress: () => bottomDialogSignUp(context),
                 ),
               ),
