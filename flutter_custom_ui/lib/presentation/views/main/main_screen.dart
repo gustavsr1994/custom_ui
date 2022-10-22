@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_ui/presentation/controllers/login/auth_controller.dart';
 import 'package:flutter_custom_ui/presentation/shared/common/styles/colors_pallete.dart';
 import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/button_with_icon.dart';
-import 'package:flutter_custom_ui/presentation/shared/widgets/buttons/line_button.dart';
 import 'package:flutter_custom_ui/presentation/views/main/login/login_screen.dart';
 import 'package:flutter_custom_ui/presentation/views/main/signup/signup_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';

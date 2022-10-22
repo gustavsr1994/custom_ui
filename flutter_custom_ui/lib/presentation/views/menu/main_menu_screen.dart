@@ -165,18 +165,19 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   }
 
   void processAbsent(String checkIn, String status, String id) {
-    var data = AbsentModel();
-    var now = new DateTime.now();
-    var currentTime = DateFormatter().getCurrentTime(now);
-    var currentDate = DateFormatter().formatBackend(now);
-    if (status == 'in') {
-      data = AbsentModel(
-          checkIn: currentTime, checkOut: '--:--', date: currentDate, name: id);
-    } else {
-      data = AbsentModel(
-          checkIn: checkIn, checkOut: currentTime, date: currentDate, name: id);
-    }
-    absentController.submitAbsentToday(data);
+    Get.toNamed('/absentMap');
+    // var data = AbsentModel();
+    // var now = new DateTime.now();
+    // var currentTime = DateFormatter().getCurrentTime(now);
+    // var currentDate = DateFormatter().formatBackend(now);
+    // if (status == 'in') {
+    //   data = AbsentModel(
+    //       checkIn: currentTime, checkOut: '--:--', date: currentDate, name: id);
+    // } else {
+    //   data = AbsentModel(
+    //       checkIn: checkIn, checkOut: currentTime, date: currentDate, name: id);
+    // }
+    // absentController.submitAbsentToday(data);
   }
 
   void navigateToCart() {
