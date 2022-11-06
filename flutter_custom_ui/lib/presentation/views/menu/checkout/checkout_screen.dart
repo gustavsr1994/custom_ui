@@ -11,8 +11,6 @@ import 'package:get/get.dart';
 class CheckOutScreen extends StatefulWidget {
   @override
   _CheckOutScreenState createState() => _CheckOutScreenState();
-  // final List<CartEntity> cartProduct;
-  // CheckOutScreen({this.cartProduct});
 }
 
 class _CheckOutScreenState extends State<CheckOutScreen> {
@@ -77,12 +75,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Name Product',
+                        'Product',
                         style: textLargeColor(
                             boldCondition: true, color: colorPallete.fontColor),
                       ),
                       Text(
-                        'Total Amount',
+                        'Total',
                         style: textLargeColor(
                             boldCondition: true, color: colorPallete.fontColor),
                       ),
@@ -93,25 +91,38 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.all(8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           cartProduct![index].nameProduct,
-                          style: textLargeColor(
-                              boldCondition: false, color: Colors.black),
+                          style: textVeryLargeColor(boldCondition: true),
                         ),
-                        Text(
-                          ((cartProduct![index].price -
-                                      cartProduct![index].discount) *
-                                  cartProduct![index].qty)
-                              .toString(),
-                          style: textLargeColor(
-                              boldCondition: false, color: Colors.black),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "${cartProduct![index].qty} x ${cartProduct![index].price}",
+                              style: textLargeColor(
+                                  boldCondition: false, color: Colors.black),
+                            ),
+                            Text(
+                              ((cartProduct![index].price -
+                                          cartProduct![index].discount) *
+                                      cartProduct![index].qty)
+                                  .toString(),
+                              style: textLargeColor(
+                                  boldCondition: false, color: Colors.black),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  )
+                  ),
+                GetX<CourierController>(
+                  builder: (controller) =>
+                      textCourier(controller.nameCourier.value),
+                ),
               ],
             ),
             SizedBox(
@@ -244,5 +255,58 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
 
   void navigateToSuccess() {
     Get.toNamed('/successPayment');
+  }
+
+  Widget textCourier(String nameCourier) {
+    if (nameCourier == "Choice Courier") {
+      return SizedBox();
+    } else {
+      return Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.all(8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Divider(
+                color: colorPallete.secondColor,
+                height: 5,
+              ),
+              Text(
+                "Courier",
+                style: textVeryLargeColor(boldCondition: true),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    nameCourier,
+                    style: textLargeColor(boldCondition: false),
+                  ),
+                  Text(
+                    priceCourier(nameCourier),
+                    style: textLargeColor(
+                        boldCondition: false, color: Colors.black),
+                  ),
+                ],
+              ),
+            ],
+          ));
+    }
+  }
+
+  String priceCourier(String courier) {
+    if (courier == "NinjaCepet") {
+      return "9000";
+    } else if (courier == "JTN") {
+      return "8000";
+    } else if (courier == "JetPack") {
+      return "7500";
+    } else if (courier == "Ojol") {
+      return "15000";
+    } else if (courier == "POSKu") {
+      return "10000";
+    } else {
+      return "000";
+    }
   }
 }

@@ -72,7 +72,40 @@ class CardProduct extends StatelessWidget {
             ),
           ),
           product!.statusCard
-              ? SizedBox()
+              ? controller.obx((state) => Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      IconButton(
+                          icon: Icon(
+                            Icons.minimize_outlined,
+                            color: Colors.red,
+                          ),
+                          onPressed: () {
+                            controller.minusQty(state!.listCart!
+                                .where((element) =>
+                                    element.codeProduct == product!.codeProduct)
+                                .toList()[0]);
+                          }),
+                      Text(state!.listCart!
+                          .where((element) =>
+                              element.codeProduct == product!.codeProduct)
+                          .toList()[0]
+                          .qty
+                          .toString()),
+                      IconButton(
+                          icon: Icon(
+                            Icons.add,
+                            color: Colors.green,
+                          ),
+                          onPressed: () {
+                            controller.addQty(state.listCart!
+                                .where((element) =>
+                                    element.codeProduct == product!.codeProduct)
+                                .toList()[0]);
+                          }),
+                    ],
+                  ))
               : Container(
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.all(8),

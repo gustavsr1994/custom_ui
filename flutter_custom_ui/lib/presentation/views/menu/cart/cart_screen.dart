@@ -40,34 +40,30 @@ class _CartScreenState extends State<CartScreen> {
                 boldCondition: true, color: colorPallete.accentColor),
           ),
           actions: [
-            controller.obx((state) => Stack(
-                  children: [
-                    IconButton(
-                        icon: SvgPicture.asset(
-                          'lib/presentation/shared/assets/images/ic_trolley.svg',
-                          color: colorPallete.accentColor,
-                        ),
-                        onPressed: () =>
-                            bottomDialogCart(context, state!.listCart!)),
-                    Positioned(
-                        right: 2,
-                        bottom: 2,
-                        child: Container(
-                          padding: EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: colorPallete.mainColor),
-                          child: Center(
-                            child: Text(
-                              state!.listCart!.length.toString(),
-                              style: textSmallColor(
-                                  boldCondition: true,
-                                  color: colorPallete.accentColor),
+            controller.obx(
+                (state) => Stack(
+                      children: [
+                        IconButton(
+                            icon: SvgPicture.asset(
+                              'lib/presentation/shared/assets/images/ic_trolley.svg',
+                              color: colorPallete.accentColor,
                             ),
-                          ),
-                        ))
-                  ],
-                ))
+                            onPressed: () =>
+                                bottomDialogCart(context, state!.listCart!)),
+                        state!.listCart!.length == 0
+                            ? SizedBox()
+                            : Positioned(
+                                right: 8,
+                                top: 8,
+                                child: Container(
+                                  padding: EdgeInsets.all(6),
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.blue),
+                                ))
+                      ],
+                    ),
+                onLoading: SizedBox())
           ],
         ),
         body: Stack(

@@ -30,22 +30,22 @@ class _MainScreenState extends State<MainScreen> {
                   'lib/presentation/shared/assets/images/images_main_screen.svg',
                 ),
               ),
-              Container(
-                width: MediaQuery.of(context).size.width / 3 * 2,
-                height: 50,
-                margin: EdgeInsets.symmetric(vertical: 8),
-                child: ButtonWithIcon(
-                  textButton: 'Log In with GMail',
-                  buttonColor: colorPallete.whiteColor,
-                  lineColor: colorPallete.accentColor,
-                  textColor: colorPallete.fontColor,
-                  image:
-                      'lib/presentation/shared/assets/images/ic_login_google.svg',
-                  onPress: () {
-                    loginWithGoogle();
-                  },
-                ),
-              ),
+              // Container(
+              //   width: MediaQuery.of(context).size.width / 3 * 2,
+              //   height: 50,
+              //   margin: EdgeInsets.symmetric(vertical: 8),
+              //   child: ButtonWithIcon(
+              //     textButton: 'Log In with GMail',
+              //     buttonColor: colorPallete.whiteColor,
+              //     lineColor: colorPallete.accentColor,
+              //     textColor: colorPallete.fontColor,
+              //     image:
+              //         'lib/presentation/shared/assets/images/ic_login_google.svg',
+              //     onPress: () {
+              //       loginWithGoogle();
+              //     },
+              //   ),
+              // ),
               Container(
                 width: MediaQuery.of(context).size.width / 3 * 2,
                 height: 50,

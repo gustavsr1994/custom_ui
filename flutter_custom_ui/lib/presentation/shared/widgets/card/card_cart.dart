@@ -49,6 +49,7 @@ class CardCart extends StatelessWidget {
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       IconButton(
                           icon: Icon(

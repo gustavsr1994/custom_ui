@@ -20,7 +20,7 @@ class BottomCart extends StatelessWidget {
       color: Color(0xFF737373),
       child: Form(
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.7,
           decoration: BoxDecoration(
             color: colorPallete.whiteColor,
             borderRadius: BorderRadius.only(

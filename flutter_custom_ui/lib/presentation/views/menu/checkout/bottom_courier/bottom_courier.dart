@@ -35,13 +35,25 @@ class BottomCourier extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       )),
                 ),
-                SizedBox(height: 20),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(
-                    'List Courier',
-                    style: textMediumColor(
-                        boldCondition: true, color: colorPallete.fontColor),
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'List Courier',
+                        style: textMediumColor(
+                            boldCondition: true, color: colorPallete.fontColor),
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          icon: Icon(
+                            Icons.close,
+                            color: Colors.red,
+                          ))
+                    ],
                   ),
                 ),
                 SizedBox(
